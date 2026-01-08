@@ -262,3 +262,20 @@ footer {
     .hero-content h1 { font-size: 2rem; }
     .stats-grid { grid-template-columns: 1fr; gap: 30px; }
 }
+/* --- เพิ่มต่อท้ายไฟล์ style.css --- */
+
+/* คลาสสำหรับรูปทั่วไป ให้เต็มกรอบและมนสวย */
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ทีเด็ด! ตัดส่วนเกินออก รูปไม่เบี้ยว */
+    border-radius: 8px; /* ขอบมนนิดๆ ดูทันสมัย */
+    display: block;
+}
+
+/* คลาสสำหรับ QR Code (ไม่ตัดขอบ) */
+.img-qr {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* โชว์เต็มรูป ไม่ตัดส่วนไหนออก */
+}
