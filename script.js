@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 2. ระบบเมนูมือถือ (Fixed ID) ---
-    const menuToggle = document.getElementById('mobile-menu');
+   const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
