@@ -1,20 +1,21 @@
-/* Google Fonts */
+/* =========================================
+   1. IMPORT FONTS & VARIABLES
+   ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&display=swap');
 
-/* บังคับให้ส่วนที่เป็นภาษาลาวใช้ฟอนต์ Noto Sans Lao */
-[lang="lo"], .lao-text {
-    font-family: 'Noto Sans Lao', 'Sarabun', sans-serif;
-}
 :root {
     --primary: #0f2c59;    /* Navy Blue */
     --accent: #d4a373;     /* Gold/Earth */
     --light: #f8f9fa;      /* Off-white background */
     --dark: #212529;       /* Text color */
     --white: #ffffff;
+    --header-height: 70px;
 }
 
-/* --- RESET & BASE STYLES (Mobile First) --- */
+/* =========================================
+   2. RESET & BASE STYLES
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
@@ -22,56 +23,156 @@
     font-family: 'Prompt', sans-serif;
 }
 
+/* บังคับฟอนต์ลาว */
+[lang="lo"], .lao-text {
+    font-family: 'Noto Sans Lao', 'Sarabun', sans-serif !important;
+}
+
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* เผื่อพื้นที่ให้ Header เวลาเลื่อน */
+    scroll-padding-top: 80px;
 }
 
 body {
     line-height: 1.6;
     color: var(--dark);
     background-color: var(--white);
-    font-size: 16px; /* ขนาดมาตรฐานมือถือ */
-    overflow-x: hidden; /* ป้องกันเว็บเลื่อนซ้ายขวาเกินจอ */
+    font-size: 16px;
+    overflow-x: hidden;
 }
 
-/* --- UTILITIES --- */
+/* =========================================
+   3. LANGUAGE SWITCHER LOGIC (FIXED)
+   ========================================= */
+
+/* --- Default State (Thai/Lao Mode) --- */
+/* ซ่อนภาษาอังกฤษไว้ก่อน */
+[lang="en"] { 
+    display: none !important; 
+}
+
+/* --- English Mode (เมื่อ body มี class="en-mode") --- */
+body.en-mode [lang="th"],
+body.en-mode [lang="lo"],
+body.en-mode .lao-text {
+    display: none !important; /* ซ่อนไทยและลาวเด็ดขาด */
+}
+
+body.en-mode [lang="en"] { 
+    display: inline !important; /* แสดงภาษาอังกฤษ (inline) */
+}
+
+/* แสดงภาษาอังกฤษที่เป็น Block Element ให้ถูกต้อง */
+body.en-mode div[lang="en"],
+body.en-mode p[lang="en"],
+body.en-mode h1[lang="en"],
+body.en-mode h2[lang="en"],
+body.en-mode h3[lang="en"],
+body.en-mode h4[lang="en"],
+body.en-mode ul[lang="en"],
+body.en-mode li[lang="en"] {
+    display: block !important;
+}
+
+/* =========================================
+   4. HEADER & NAVIGATION (MOBILE FIRST)
+   ========================================= */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+/* ปุ่ม Hamburger */
+.menu-toggle {
+    display: block; /* แสดงบนมือถือ */
+    font-size: 1.8rem;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+/* --- MOBILE MENU FIXED --- */
+.nav-links {
+    position: fixed; /* ใช้ fixed เพื่อให้ลอยทับทุกอย่าง */
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height)); /* สูงเต็มจอที่เหลือ */
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 40px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    
+    /* ซ่อนเมนูไว้ด้านข้าง */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex; 
+}
+
+/* คลาส active สำหรับเปิดเมนู (ต้องใช้ JS สลับ) */
+.nav-links.active {
+    transform: translateX(0); /* เลื่อนออกมาโชว์ */
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px;
+}
+
+.lang-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+/* =========================================
+   5. COMPONENT STYLES
+   ========================================= */
 .container {
     width: 100%;
-    padding: 0 20px; /* ขอบซ้ายขวาในมือถือ */
+    padding: 0 20px;
     margin: 0 auto;
     max-width: 1200px;
 }
 
-.section-padding {
-    padding: 60px 0; /* ระยะห่างระหว่าง Section */
-}
-
+.section-padding { padding: 60px 0; }
 .text-center { text-align: center; }
-.bg-light { background-color: var(--light); }
-
-.img-cover {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
-}
-
-.img-placeholder {
-    background-color: #e9ecef;
-    color: #6c757d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: 2px dashed #ced4da;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    width: 100%;
-}
-
-/* ปุ่มต่างๆ ปรับให้กดง่ายบนมือถือ */
 .btn-primary {
     display: inline-block;
     background: var(--accent);
@@ -83,171 +184,46 @@ body {
     transition: 0.3s;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+.btn-primary:active { transform: scale(0.98); }
 
-.btn-primary:active {
-    transform: scale(0.98); /* เอฟเฟกต์เวลากด */
-}
-
-/* --- HEADER & NAVIGATION (Mobile Style) --- */
-header {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 70px; /* ความสูง Header มือถือ */
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* รูปภาพและ Placeholder */
+.img-cover {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
-
-.logo img {
-    height: 50px; /* โลโก้มือถือไม่ใหญ่เกินไป */
-    width: auto;
-}
-
-/* ปุ่ม Hamburger (ขีด 3 ขีด) */
-.menu-toggle {
-    display: block; /* โชว์บนมือถือ */
-    font-size: 1.5rem;
-    color: var(--primary);
-    cursor: pointer;
-    padding: 10px; /* เพิ่มพื้นที่สัมผัส */
-}
-
-/* เมนูบนมือถือ (ซ่อนไว้ก่อน) */
-.nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: white;
-    flex-direction: column;
+.img-placeholder {
+    background-color: #e9ecef;
+    color: #6c757d;
+    display: flex;
     align-items: center;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    display: none; /* ซ่อน */
-    padding: 20px 0;
-}
-
-/* คลาสที่จะถูกเติมด้วย JS เมื่อกดปุ่ม */
-.nav-links.active {
-    display: flex; /* โชว์แบบ Flex แนวตั้ง */
-}
-
-.nav-links li {
-    list-style: none;
-    margin: 15px 0;
-    width: 100%;
+    justify-content: center;
     text-align: center;
+    border: 2px dashed #ced4da;
+    border-radius: 8px;
+    width: 100%;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    font-size: 1.1rem;
-    display: block;
-    padding: 10px;
-}
-
-/* ปุ่มเปลี่ยนภาษา */
-.lang-btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-/* --- LOGIC สลับภาษา (แก้ไขเพิ่มภาษาลาว) --- */
-/* ปกติ: ซ่อนภาษาอังกฤษ */
-[lang="en"] { display: none; }
-
-/* โหมด EN: ซ่อนไทย และ ซ่อนลาว */
-body.en-mode [lang="th"],
-body.en-mode [lang="lo"] { 
-    display: none !important; 
-}
-
-/* โหมด EN: โชว์อังกฤษ */
-body.en-mode [lang="en"] { display: inline; }
-body.en-mode div[lang="en"], 
-body.en-mode h1[lang="en"], 
-body.en-mode p[lang="en"] { display: block; }
-
-
-/* --- HERO SECTION --- */
+/* Hero Section */
 .hero-section {
     position: relative;
-    padding: 80px 20px; /* เพิ่ม Padding บนล่าง */
-    min-height: auto; /* ไม่ฟิกซ์ความสูง ให้ยืดตามเนื้อหา */
+    padding: 80px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
 }
-/* Background Overlay จัดการใน Inline CSS ที่หน้า HTML */
-
 .hero-content h1 {
-    font-size: 1.8rem; /* หัวข้อบนมือถือเล็กลงหน่อย */
+    font-size: 1.8rem;
     line-height: 1.3;
     margin-bottom: 15px;
 }
 
-/* --- GENERAL LAYOUTS (Stacking) --- */
-/* บังคับให้ทุกอย่างเรียงแนวตั้งบนมือถือ */
-.about-wrapper, 
-.benefit-item, 
-.checklist-item {
-    display: flex;
-    flex-direction: column; /* เรียงลงล่าง */
-    gap: 30px;
-}
-
-.checklist-item, .benefit-item {
-    flex-direction: row; /* ข้อยกเว้น: ลิสต์รายการให้เรียงซ้ายขวาเหมือนเดิม */
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 คอลัมน์เต็ม */
-    gap: 25px;
-}
-
-.section-title {
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 30px;
-}
-
-/* Stats Box */
-.stat-box {
-    margin-bottom: 20px;
-}
-
-/* Process Steps */
-.process-step {
-    padding: 20px;
-    text-align: center;
-}
-
-/* Contact Form */
-.contact-form {
-    width: 100%;
-}
+/* Form */
 .contact-form input, .contact-form textarea {
     width: 100%;
     padding: 15px;
@@ -257,19 +233,96 @@ body.en-mode p[lang="en"] { display: block; }
     font-size: 1rem;
 }
 
-/* --- DESKTOP VERSION (จอใหญ่กว่า 768px) --- */
-@media (min-width: 768px) {
+/* =========================================
+   6. MOBILE LAYOUTS (Default)
+   ========================================= */
+/* จัดเรียงแนวตั้งสำหรับมือถือ */
+.about-wrapper, .benefit-item, .checklist-item {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.checklist-item, .benefit-item {
+    flex-direction: row; /* ข้อยกเว้น */
+    align-items: flex-start;
+    gap: 15px;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+/* --- MOBILE SERVICES CARD FIX --- */
+#services .about-wrapper {
+    display: flex;
+    flex-direction: column !important;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 30px !important;
+    padding-bottom: 25px;
+}
+#services .about-img-box {
+    width: 100% !important;
+    height: 200px !important;
+    margin: 0 !important;
+}
+#services .about-img-box img,
+#services .about-img-box .img-placeholder {
+    border-radius: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover;
+}
+#services .about-text {
+    padding: 25px 20px 0 20px !important;
+    text-align: center;
+    width: 100% !important;
+}
+#services .about-text h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+#services .about-text ul {
+    text-align: left;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+#services .about-text ul li {
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+#services .about-text ul li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* =========================================
+   7. DESKTOP VERSION (min-width: 992px)
+   ========================================= */
+@media (min-width: 992px) {
     /* Header & Nav */
     .menu-toggle { display: none; } /* ซ่อนปุ่ม Hamburger */
     
     .nav-links {
-        display: flex;
         position: static;
         flex-direction: row;
         width: auto;
+        height: auto;
         background: transparent;
         box-shadow: none;
         padding: 0;
+        transform: none; /* ยกเลิก Slide Effect */
+        display: flex !important; /* บังคับแสดงผลเสมอ */
         gap: 30px;
     }
     
@@ -277,232 +330,73 @@ body.en-mode p[lang="en"] { display: block; }
     .nav-links a { padding: 0; font-size: 1rem; }
     .lang-btn { margin-top: 0; }
 
-    /* Layouts */
+    /* Typography & Layout */
     .hero-content h1 { font-size: 3rem; }
-    
-    .about-wrapper {
-        flex-direction: row; /* เรียงซ้ายขวา */
-        align-items: center;
-        gap: 50px;
-    }
-    
-    /* สลับรูปซ้ายขวา (สำหรับ Section ที่ 2, 4, etc.) */
-    .about-wrapper.reverse { flex-direction: row-reverse; }
+    .section-title { font-size: 2.2rem; }
 
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ */
-    }
-    
-    /* สำหรับ Stats 4 ช่อง */
-    #stats .services-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    /* สำหรับ Process 5 ช่อง */
-    #process .services-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
+    /* Grids */
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    #stats .services-grid { grid-template-columns: repeat(4, 1fr); }
+    #process .services-grid { grid-template-columns: repeat(5, 1fr); }
 
-    .contact-wrapper {
-        display: flex;
-        gap: 50px;
-    }
-    .contact-info, .contact-form { flex: 1; }
-}
-
-/* --- แก้ไขเฉพาะส่วน SERVICES บนมือถือ (Updated Fix) --- */
-
-/* 1. ปรับ Container ของแต่ละบริการให้เป็น "การ์ด" */
-#services .about-wrapper {
-    display: flex;
-    flex-direction: column !important; /* ⭐ เติม !important เพื่อบังคับให้เรียงแนวตั้งเสมอ */
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    margin-bottom: 30px !important;
-    padding-bottom: 25px;
-    height: auto !important; /* ป้องกันความสูงเพี้ยน */
-}
-
-/* 2. จัดการรูปภาพ (ให้เต็มความกว้างด้านบน) */
-#services .about-img-box {
-    width: 100% !important; /* บังคับเต็มจอ */
-    height: 200px !important; /* ฟิกซ์ความสูง */
-    margin: 0 !important; /* ลบระยะห่างที่อาจติดมา */
-}
-
-#services .about-img-box .img-placeholder,
-#services .about-img-box img {
-    border-radius: 0 !important; /* ลบมุมมนออก */
-    height: 100% !important;
-    width: 100% !important;
-    border: none;
-    object-fit: cover;
-}
-
-/* 3. จัดการข้อความ */
-#services .about-text {
-    padding: 25px 20px 0 20px !important; /* ⭐ เพิ่มระยะห่างด้านบน 25px ให้ไม่เบียดรูป */
-    text-align: center;
-    width: 100% !important;
-}
-
-#services .about-text h3 {
-    font-size: 1.4rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-    margin-top: 0; /* ลบระยะหัวข้อที่อาจดันขึ้นไป */
-}
-
-#services .about-text ul {
-    text-align: left;
-    margin-top: 15px;
-    padding-left: 10px;
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-#services .about-text ul li {
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-    list-style: none;
-    position: relative;
-    padding-left: 20px;
-}
-
-#services .about-text ul li::before {
-    content: "•";
-    color: var(--accent);
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-}
-
-/* --- ส่วน Desktop (จอใหญ่) --- */
-@media (min-width: 768px) {
+    /* --- RESET SERVICES CARD STYLE FOR DESKTOP --- */
     #services .about-wrapper {
-        flex-direction: row !important; /* กลับมาเรียงแนวนอน */
-        box-shadow: none;
+        flex-direction: row !important;
         background: transparent;
-        padding-bottom: 0;
+        box-shadow: none;
         margin-bottom: 80px !important;
         align-items: center;
+        padding-bottom: 0;
+        border-radius: 0;
     }
-
-    /* อันนี้สำคัญ! สั่งสลับด้านเฉพาะบน PC */
-    #services .about-wrapper.reverse {
-        flex-direction: row-reverse !important; 
-    }
-
+    #services .about-wrapper.reverse { flex-direction: row-reverse !important; }
+    
     #services .about-img-box {
-        height: auto !important;
         flex: 1;
         width: auto !important;
+        height: auto !important;
     }
-    
     #services .about-img-box img,
     #services .about-img-box .img-placeholder {
         border-radius: 10px !important;
-        height: 300px !important;
+        height: 350px !important;
     }
-
+    
     #services .about-text {
         flex: 1;
-        padding: 0 0 0 40px !important;
-        text-align: left;
+        padding: 0 0 0 50px !important;
+        text-align: left !important;
     }
-
     #services .about-wrapper.reverse .about-text {
-        padding: 0 40px 0 0 !important;
+        padding: 0 50px 0 0 !important;
     }
-    
-    #services .about-text ul {
-        background: transparent;
-        padding: 0;
-    }
-}
-/* --- ส่วน Desktop (จอใหญ่) ให้กลับไปเป็นแบบเดิม --- */
-@media (min-width: 768px) {
-    #services .about-wrapper {
-        flex-direction: row; /* กลับมาเรียงซ้ายขวา */
-        box-shadow: none; /* ลบเงาออก */
-        background: transparent; /* ลบพื้นหลัง */
-        padding-bottom: 0;
-        margin-bottom: 80px !important;
-        align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
-    }
+    #services .about-text ul { background: transparent; padding: 0; }
 
-    #services .about-wrapper.reverse {
-        flex-direction: row-reverse; /* สลับด้านตามดีไซน์เดิม */
+    /* Contact Section */
+    .contact-wrapper {
+        display: flex;
+        gap: 60px;
     }
+    .contact-info, .contact-form { flex: 1; }
 
-    #services .about-img-box {
-        height: auto; /* ปล่อยอิสระ */
-        flex: 1; /* แบ่งครึ่งหน้าจอ */
-    }
-    
-    #services .about-img-box img,
-    #services .about-img-box .img-placeholder {
-        border-radius: 10px; /* คืนมุมมน */
-        height: 300px !important; /* ความสูงรูปใน Desktop */
-    }
-
-    #services .about-text {
-        flex: 1;
-        padding: 0 0 0 40px; /* เว้นระยะซ้าย */
-        text-align: left; /* ชิดซ้าย */
-    }
-
-    /* ถ้าเป็นแบบ reverse ให้เว้นระยะขวาแทน */
-    #services .about-wrapper.reverse .about-text {
-        padding: 0 40px 0 0;
-    }
-    
-    #services .about-text ul {
-        background: transparent; /* ลบพื้นหลังลิสต์ */
-        padding: 0;
-    }
-}
-/* =========================================
-   FIX: About Section Profile Image on PC
-   ========================================= */
-
-/* ใช้ Media Query สำหรับจอคอม (กว้างกว่า 992px) */
-@media (min-width: 992px) {
-    
-    /* 1. จัด Layout ให้รูปกับข้อความอยู่ข้างกัน */
+    /* About Expert Profile Image */
     #about .about-wrapper {
         display: flex;
-        flex-direction: row; /* แนวนอน */
-        align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+        flex-direction: row;
+        align-items: center;
         justify-content: center;
-        gap: 60px; /* ระยะห่างระหว่างรูปกับข้อความ */
+        gap: 60px;
     }
-
-    /* 2. ล็อกขนาดกล่องรูปภาพ ไม่ให้ใหญ่เกินไป */
     #about .about-img-box {
-        flex: 0 0 400px; /* ฟิกซ์ความกว้างที่ 400px (กำลังสวยสำหรับรูปคน) */
-        height: 500px;   /* ฟิกซ์ความสูง */
-        width: 400px;    /* ย้ำความกว้าง */
-        margin: 0;       /* ลบ margin ที่อาจติดมา */
+        flex: 0 0 400px;
+        height: 500px;
+        width: 400px !important;
     }
-
-    /* 3. จัดการตัวรูปภาพให้คมชัดและดูมีมิติ */
     #about .about-img-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* ตัดส่วนเกินออกอัตโนมัติ */
-        object-position: top center; /* โฟกัสที่ใบหน้า (ด้านบนของรูป) */
-        border-radius: 12px; /* มุมมนสวยๆ */
-        box-shadow: 15px 15px 0px var(--primary); /* ใส่เงาแบบ Solid ให้ดู Pop ออกมา */
+        border-radius: 12px;
+        box-shadow: 20px 20px 0px var(--primary);
     }
-
-    /* 4. จัดการส่วนข้อความให้กินพื้นที่ที่เหลือ */
     #about .about-text {
-        flex: 1; /* กินพื้นที่ที่เหลือทั้งหมด */
-        text-align: left;
-        padding-right: 20px;
+        padding-right: 0;
     }
 }
