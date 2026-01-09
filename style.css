@@ -1,6 +1,11 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&display=swap');
 
+/* บังคับให้ส่วนที่เป็นภาษาลาวใช้ฟอนต์ Noto Sans Lao */
+[lang="lo"], .lao-text {
+    font-family: 'Noto Sans Lao', 'Sarabun', sans-serif;
+}
 :root {
     --primary: #0f2c59;    /* Navy Blue */
     --accent: #d4a373;     /* Gold/Earth */
