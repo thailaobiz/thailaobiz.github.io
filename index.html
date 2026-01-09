@@ -478,42 +478,99 @@
         </div>
     </section>
 
-    <section id="contact" class="section-padding bg-light">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h2 class="section-title">
-                        <span lang="th">พร้อมบุกตลาดลาวหรือยัง?</span>
-                        <span lang="en">Ready to Expand?</span>
-                    </h2>
-                    <p lang="th" style="font-size: 1.1rem;">อย่ารอให้คู่แข่งยึดพื้นที่ตลาด Niche ไปหมด ปรึกษาผมก่อนเจ็บตัวฟรี</p>
-                    <p lang="en" style="font-size: 1.1rem;">Don't let competitors take the Niche market spot. Consult me before losing money.</p>
+   <section id="contact" class="section-padding bg-light">
+    <div class="container">
+        <div class="contact-wrapper" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: flex-start;">
+            
+            <div class="contact-info" style="flex: 1; min-width: 300px;">
+                <h2 class="section-title">
+                    <span lang="th">พร้อมบุกตลาดลาวหรือยัง?</span>
+                    <span lang="en">Ready to Expand?</span>
+                </h2>
+                <p lang="th" style="font-size: 1.1rem; color: #555;">อย่ารอให้คู่แข่งยึดพื้นที่ตลาด Niche ไปหมด ปรึกษาผมก่อนเจ็บตัวฟรี</p>
+                <p lang="en" style="font-size: 1.1rem; color: #555;">Don't let competitors take the Niche market spot. Consult me before losing money.</p>
+                
+                <div class="contact-methods" style="margin-top: 30px;">
+                    <div style="margin-bottom: 25px;">
+                        <img src="images/qr-code.jpg" alt="Line QR" style="height: 180px; width: 180px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    </div>
                     
-                    <div class="contact-methods" style="margin-top: 30px;">
-                        <div class="img-placeholder" style="height: 180px; width: 180px; margin-bottom: 20px;">
-                            <img src="images/qr-code.jpg" class="img-cover" alt="Line QR">
-                        </div>
-                        <p><i class="fab fa-facebook"></i> Thai Lao E-Biz Advisor</p>
-                        <p><i class="fab fa-line"></i> kwan.pawach</p>
-                        <p><i class="fas fa-envelope"></i> kwanpawach@gmail.com</p>
+                    <div style="font-size: 1.1rem; line-height: 2;">
+                        <p><i class="fab fa-facebook" style="color: #1877F2; width: 25px;"></i> Thai Lao E-Biz Advisor</p>
+                        <p><i class="fab fa-line" style="color: #00C300; width: 25px;"></i> kwan.pawach</p>
+                        <p><i class="fas fa-envelope" style="color: #c0392b; width: 25px;"></i> kwanpawach@gmail.com</p>
                     </div>
                 </div>
-                
-                <form class="contact-form">
-                    <h3 lang="th">ฝากข้อความ (Fast Track)</h3>
-                    <h3 lang="en">Request a Callback</h3>
-                    <input type="text" placeholder="ชื่อของคุณ / Name" required>
-                    <input type="tel" placeholder="เบอร์โทร / Phone" required>
-                    <input type="text" placeholder="สินค้าของคุณคืออะไร? / Your Product">
-                    <textarea rows="4" placeholder="ปัญหาหลักที่ต้องการปรึกษา / Key Problem" required></textarea>
-                    <button type="submit" class="btn-primary" style="width: 100%; border-radius: 8px;">
-                        <span lang="th">ส่งข้อความ</span><span lang="en">Send Message</span>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <form id="google-sheet-form" class="contact-form">
+                    <h3 lang="th" style="margin-bottom: 20px; color: #0f2c59;">ฝากข้อความ (Fast Track)</h3>
+                    <h3 lang="en" style="margin-bottom: 20px; color: #0f2c59;">Request a Callback</h3>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="name" placeholder="ชื่อของคุณ / Name" required 
+                               style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <input type="tel" name="contact_info" placeholder="เบอร์โทร หรือ อีเมล / Phone or Email" required 
+                               style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="product" placeholder="สินค้าของคุณคืออะไร? / Your Product" required 
+                               style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <textarea name="message" rows="4" placeholder="ปัญหาหลักที่ต้องการปรึกษา / Key Problem" required 
+                                  style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;"></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; border-radius: 8px; border: none; padding: 15px; cursor: pointer; font-weight: bold;">
+                        <span lang="th">ส่งข้อมูลปรึกษาฟรี</span><span lang="en">Send Message</span>
                     </button>
+
+                    <div id="form-success" style="display: none; margin-top: 15px; padding: 15px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
+                        <span lang="th">ได้รับข้อมูลแล้ว! ผมจะติดต่อกลับโดยเร็วที่สุด</span>
+                        <span lang="en">Success! I will contact you back soon.</span>
+                    </div>
                 </form>
             </div>
+            
         </div>
-    </section>
+    </div>
+</section>
 
+<footer style="padding: 40px 0; background: #0a1f3d; color: white; text-align: center;">
+    <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const scriptURL = https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec; // วาง URL จาก Google Apps Script ของคุณ
+    const form = document.getElementById('google-sheet-form');
+    const btn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('form-success');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerText = 'Sending...';
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                btn.style.display = 'none';
+                successMsg.style.display = 'block';
+                form.reset();
+            })
+            .catch(error => {
+                btn.disabled = false;
+                btn.innerText = 'Try Again';
+                alert('Error! โปรดลองใหม่อีกครั้ง');
+            });
+    });
+</script>
     <footer>
         <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
     </footer>
