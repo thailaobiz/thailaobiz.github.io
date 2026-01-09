@@ -44,7 +44,7 @@ if (menuToggle && navLinks) {
 
 
     // --- 3. Google Sheets Form (เดิม) ---
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec'; // ใส่ URL เดิมของคุณ
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyK5s6IukfFynzbpIJxqpm7UN0yEwKnYkhDTJcRoacWSj8XovVyq9z_gQuzCezufsY9/exec'; // ใส่ URL เดิมของคุณ
     const form = document.getElementById('google-sheet-form');
     if (form) {
         form.addEventListener('submit', e => {
