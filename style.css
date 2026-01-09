@@ -42,40 +42,39 @@ body {
 }
 
 /* =========================================
-   3. LANGUAGE SWITCHER LOGIC (FIXED)
+   3. LANGUAGE SWITCHER LOGIC (RE-FIXED)
    ========================================= */
 
-/* --- Default State (Thai/Lao Mode) --- */
-/* ซ่อนภาษาอังกฤษไว้ก่อน */
+/* สถานะปกติ: ซ่อนภาษาอังกฤษ */
 [lang="en"] { 
     display: none !important; 
 }
 
-/* --- English Mode (เมื่อ body มี class="en-mode") --- */
+/* เมื่ออยู่ในโหมดภาษาอังกฤษ (body.en-mode) */
 body.en-mode [lang="th"],
-body.en-mode [lang="lo"],
-body.en-mode .lao-text {
+body.en-mode [lang="lo"] {
     display: none !important; /* ซ่อนไทยและลาวเด็ดขาด */
 }
 
-body.en-mode [lang="en"] { 
-    display: inline !important; /* แสดงภาษาอังกฤษ (inline) */
+/* แสดงภาษาอังกฤษโดยใช้ inherit เพื่อป้องกันเลย์เอาท์พัง (ไม่ให้กองรวมกัน) */
+body.en-mode [lang="en"] {
+    display: inherit !important; 
 }
 
-/* แสดงภาษาอังกฤษที่เป็น Block Element ให้ถูกต้อง */
-body.en-mode div[lang="en"],
-body.en-mode p[lang="en"],
-body.en-mode h1[lang="en"],
-body.en-mode h2[lang="en"],
-body.en-mode h3[lang="en"],
-body.en-mode h4[lang="en"],
-body.en-mode ul[lang="en"],
-body.en-mode li[lang="en"] {
+/* จัดประเภทให้ชัดเจนสำหรับ Block element */
+body.en-mode div[lang="en"], 
+body.en-mode p[lang="en"], 
+body.en-mode h1[lang="en"], 
+body.en-mode h2[lang="en"], 
+body.en-mode h3[lang="en"], 
+body.en-mode h4[lang="en"], 
+body.en-mode li[lang="en"],
+body.en-mode section[lang="en"] {
     display: block !important;
 }
 
 /* =========================================
-   4. HEADER & NAVIGATION (MOBILE FIRST)
+   4. HEADER & NAVIGATION (MOBILE FIXED)
    ========================================= */
 header {
     background: white;
@@ -98,9 +97,8 @@ nav {
     width: auto;
 }
 
-/* ปุ่ม Hamburger */
 .menu-toggle {
-    display: block; /* แสดงบนมือถือ */
+    display: block;
     font-size: 1.8rem;
     color: var(--primary);
     cursor: pointer;
@@ -108,34 +106,30 @@ nav {
     z-index: 1001;
 }
 
-/* --- MOBILE MENU FIXED --- */
 .nav-links {
-    position: fixed; /* ใช้ fixed เพื่อให้ลอยทับทุกอย่าง */
+    position: fixed;
     top: var(--header-height);
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--header-height)); /* สูงเต็มจอที่เหลือ */
+    height: calc(100vh - var(--header-height));
     background: white;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding-top: 40px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    
-    /* ซ่อนเมนูไว้ด้านข้าง */
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     display: flex; 
 }
 
-/* คลาส active สำหรับเปิดเมนู (ต้องใช้ JS สลับ) */
 .nav-links.active {
-    transform: translateX(0); /* เลื่อนออกมาโชว์ */
+    transform: translateX(0);
 }
 
 .nav-links li {
     list-style: none;
-    margin: 20px 0;
+    margin: 15px 0;
     width: 100%;
     text-align: center;
 }
@@ -157,8 +151,7 @@ nav {
     border-radius: 20px;
     cursor: pointer;
     font-weight: 600;
-    margin-top: 20px;
-    font-size: 1rem;
+    margin-top: 10px;
 }
 
 /* =========================================
@@ -173,6 +166,7 @@ nav {
 
 .section-padding { padding: 60px 0; }
 .text-center { text-align: center; }
+
 .btn-primary {
     display: inline-block;
     background: var(--accent);
@@ -186,28 +180,7 @@ nav {
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-.btn-primary:active { transform: scale(0.98); }
 
-/* รูปภาพและ Placeholder */
-.img-cover {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-.img-placeholder {
-    background-color: #e9ecef;
-    color: #6c757d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: 2px dashed #ced4da;
-    border-radius: 8px;
-    width: 100%;
-}
-
-/* Hero Section */
 .hero-section {
     position: relative;
     padding: 80px 20px;
@@ -217,43 +190,35 @@ nav {
     text-align: center;
     color: white;
 }
+
 .hero-content h1 {
     font-size: 1.8rem;
     line-height: 1.3;
     margin-bottom: 15px;
 }
 
-/* Form */
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
 /* =========================================
-   6. MOBILE LAYOUTS (Default)
+   6. MOBILE LAYOUTS
    ========================================= */
-/* จัดเรียงแนวตั้งสำหรับมือถือ */
 .about-wrapper, .benefit-item, .checklist-item {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
+
 .checklist-item, .benefit-item {
-    flex-direction: row; /* ข้อยกเว้น */
+    flex-direction: row;
     align-items: flex-start;
     gap: 15px;
 }
+
 .services-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
 }
 
-/* --- MOBILE SERVICES CARD FIX --- */
+/* --- MOBILE SERVICES CARD --- */
 #services .about-wrapper {
     display: flex;
     flex-direction: column !important;
@@ -264,54 +229,29 @@ nav {
     margin-bottom: 30px !important;
     padding-bottom: 25px;
 }
+
 #services .about-img-box {
     width: 100% !important;
     height: 200px !important;
     margin: 0 !important;
 }
-#services .about-img-box img,
-#services .about-img-box .img-placeholder {
-    border-radius: 0 !important;
-    height: 100% !important;
+
+#services .about-img-box img {
     width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
 }
+
 #services .about-text {
     padding: 25px 20px 0 20px !important;
     text-align: center;
-    width: 100% !important;
-}
-#services .about-text h3 {
-    margin-top: 0;
-    color: var(--primary);
-}
-#services .about-text ul {
-    text-align: left;
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-}
-#services .about-text ul li {
-    list-style: none;
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 8px;
-}
-#services .about-text ul li::before {
-    content: "•";
-    color: var(--accent);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
 }
 
 /* =========================================
    7. DESKTOP VERSION (min-width: 992px)
    ========================================= */
 @media (min-width: 992px) {
-    /* Header & Nav */
-    .menu-toggle { display: none; } /* ซ่อนปุ่ม Hamburger */
+    .menu-toggle { display: none; }
     
     .nav-links {
         position: static;
@@ -321,8 +261,8 @@ nav {
         background: transparent;
         box-shadow: none;
         padding: 0;
-        transform: none; /* ยกเลิก Slide Effect */
-        display: flex !important; /* บังคับแสดงผลเสมอ */
+        transform: none;
+        display: flex !important;
         gap: 30px;
     }
     
@@ -330,16 +270,11 @@ nav {
     .nav-links a { padding: 0; font-size: 1rem; }
     .lang-btn { margin-top: 0; }
 
-    /* Typography & Layout */
     .hero-content h1 { font-size: 3rem; }
     .section-title { font-size: 2.2rem; }
-
-    /* Grids */
     .services-grid { grid-template-columns: repeat(3, 1fr); }
-    #stats .services-grid { grid-template-columns: repeat(4, 1fr); }
-    #process .services-grid { grid-template-columns: repeat(5, 1fr); }
 
-    /* --- RESET SERVICES CARD STYLE FOR DESKTOP --- */
+    /* RESET SERVICES FOR DESKTOP */
     #services .about-wrapper {
         flex-direction: row !important;
         background: transparent;
@@ -347,56 +282,35 @@ nav {
         margin-bottom: 80px !important;
         align-items: center;
         padding-bottom: 0;
-        border-radius: 0;
     }
-    #services .about-wrapper.reverse { flex-direction: row-reverse !important; }
     
-    #services .about-img-box {
-        flex: 1;
-        width: auto !important;
-        height: auto !important;
-    }
-    #services .about-img-box img,
-    #services .about-img-box .img-placeholder {
-        border-radius: 10px !important;
-        height: 350px !important;
-    }
+    #services .about-wrapper.reverse { flex-direction: row-reverse !important; }
     
     #services .about-text {
         flex: 1;
         padding: 0 0 0 50px !important;
         text-align: left !important;
     }
+
     #services .about-wrapper.reverse .about-text {
         padding: 0 50px 0 0 !important;
     }
-    #services .about-text ul { background: transparent; padding: 0; }
 
-    /* Contact Section */
-    .contact-wrapper {
-        display: flex;
-        gap: 60px;
-    }
-    .contact-info, .contact-form { flex: 1; }
-
-    /* About Expert Profile Image */
+    /* ABOUT EXPERT */
     #about .about-wrapper {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
         gap: 60px;
     }
+
     #about .about-img-box {
         flex: 0 0 400px;
         height: 500px;
-        width: 400px !important;
     }
+
     #about .about-img-box img {
         border-radius: 12px;
         box-shadow: 20px 20px 0px var(--primary);
-    }
-    #about .about-text {
-        padding-right: 0;
     }
 }
