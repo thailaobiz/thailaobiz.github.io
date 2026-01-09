@@ -294,3 +294,112 @@ body.en-mode div[lang="en"], body.en-mode h1[lang="en"], body.en-mode p[lang="en
     }
     .contact-info, .contact-form { flex: 1; }
 }
+
+/* --- แก้ไขเฉพาะส่วน SERVICES บนมือถือ (ให้สวยเหมือน Card) --- */
+
+/* 1. ปรับ Container ของแต่ละบริการให้เป็น "การ์ด" */
+#services .about-wrapper {
+    display: flex;
+    flex-direction: column; /* เรียงแนวตั้งเสมอ */
+    background: white;
+    border-radius: 15px; /* มุมมน */
+    overflow: hidden; /* ตัดขอบรูป */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* เงานุ่มๆ */
+    margin-bottom: 30px !important; /* เว้นระยะห่างระหว่างการ์ด */
+    padding-bottom: 25px; /* เว้นขอบล่างให้หายใจ */
+}
+
+/* 2. จัดการรูปภาพในบริการ */
+#services .about-img-box {
+    width: 100%;
+    height: 200px; /* ฟิกซ์ความสูงรูปบนมือถือ ไม่ให้ยืดเกินไป */
+}
+
+#services .about-img-box .img-placeholder,
+#services .about-img-box img {
+    border-radius: 0; /* ลบมุมมนออก เพราะจะให้เต็มขอบบน */
+    height: 100% !important;
+    width: 100%;
+    border: none;
+}
+
+/* 3. จัดการข้อความ */
+#services .about-text {
+    padding: 20px 20px 0 20px; /* เพิ่มช่องว่างรอบข้อความ */
+    text-align: center; /* จัดกลางให้อ่านง่าย */
+}
+
+#services .about-text h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+#services .about-text ul {
+    text-align: left; /* ลิสต์รายการให้ชิดซ้ายเหมือนเดิม */
+    margin-top: 15px;
+    padding-left: 10px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#services .about-text ul li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    list-style: none; /* ลบจุดเดิม */
+    position: relative;
+    padding-left: 20px;
+}
+
+/* ใส่จุด Bullet สวยๆ แทน */
+#services .about-text ul li::before {
+    content: "•";
+    color: var(--accent);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* --- ส่วน Desktop (จอใหญ่) ให้กลับไปเป็นแบบเดิม --- */
+@media (min-width: 768px) {
+    #services .about-wrapper {
+        flex-direction: row; /* กลับมาเรียงซ้ายขวา */
+        box-shadow: none; /* ลบเงาออก */
+        background: transparent; /* ลบพื้นหลัง */
+        padding-bottom: 0;
+        margin-bottom: 80px !important;
+        align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+    }
+
+    #services .about-wrapper.reverse {
+        flex-direction: row-reverse; /* สลับด้านตามดีไซน์เดิม */
+    }
+
+    #services .about-img-box {
+        height: auto; /* ปล่อยอิสระ */
+        flex: 1; /* แบ่งครึ่งหน้าจอ */
+    }
+    
+    #services .about-img-box img,
+    #services .about-img-box .img-placeholder {
+        border-radius: 10px; /* คืนมุมมน */
+        height: 300px !important; /* ความสูงรูปใน Desktop */
+    }
+
+    #services .about-text {
+        flex: 1;
+        padding: 0 0 0 40px; /* เว้นระยะซ้าย */
+        text-align: left; /* ชิดซ้าย */
+    }
+
+    /* ถ้าเป็นแบบ reverse ให้เว้นระยะขวาแทน */
+    #services .about-wrapper.reverse .about-text {
+        padding: 0 40px 0 0;
+    }
+    
+    #services .about-text ul {
+        background: transparent; /* ลบพื้นหลังลิสต์ */
+        padding: 0;
+    }
+}
