@@ -450,3 +450,44 @@ body.en-mode div[lang="en"], body.en-mode h1[lang="en"], body.en-mode p[lang="en
         padding: 0;
     }
 }
+/* =========================================
+   FIX: About Section Profile Image on PC
+   ========================================= */
+
+/* ใช้ Media Query สำหรับจอคอม (กว้างกว่า 992px) */
+@media (min-width: 992px) {
+    
+    /* 1. จัด Layout ให้รูปกับข้อความอยู่ข้างกัน */
+    #about .about-wrapper {
+        display: flex;
+        flex-direction: row; /* แนวนอน */
+        align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+        justify-content: center;
+        gap: 60px; /* ระยะห่างระหว่างรูปกับข้อความ */
+    }
+
+    /* 2. ล็อกขนาดกล่องรูปภาพ ไม่ให้ใหญ่เกินไป */
+    #about .about-img-box {
+        flex: 0 0 400px; /* ฟิกซ์ความกว้างที่ 400px (กำลังสวยสำหรับรูปคน) */
+        height: 500px;   /* ฟิกซ์ความสูง */
+        width: 400px;    /* ย้ำความกว้าง */
+        margin: 0;       /* ลบ margin ที่อาจติดมา */
+    }
+
+    /* 3. จัดการตัวรูปภาพให้คมชัดและดูมีมิติ */
+    #about .about-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ตัดส่วนเกินออกอัตโนมัติ */
+        object-position: top center; /* โฟกัสที่ใบหน้า (ด้านบนของรูป) */
+        border-radius: 12px; /* มุมมนสวยๆ */
+        box-shadow: 15px 15px 0px var(--primary); /* ใส่เงาแบบ Solid ให้ดู Pop ออกมา */
+    }
+
+    /* 4. จัดการส่วนข้อความให้กินพื้นที่ที่เหลือ */
+    #about .about-text {
+        flex: 1; /* กินพื้นที่ที่เหลือทั้งหมด */
+        text-align: left;
+        padding-right: 20px;
+    }
+}
