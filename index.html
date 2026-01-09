@@ -746,6 +746,26 @@
     <footer style="padding: 40px 0; background: #0a1f3d; color: white; text-align: center;">
         <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
     </footer>
+    
+// Form submission logic
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
 
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btn.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    form.reset();
+                })
+                .catch(error => {
+                    btn.disabled = false;
+                    btn.innerText = 'Try Again';
+                    alert('Error! โปรดลองใหม่อีกครั้ง');
+                });
+        });
+    </script>
+    <script src="script.js"></script>
         </body>
 </html>
