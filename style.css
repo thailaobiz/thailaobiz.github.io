@@ -491,3 +491,14 @@ body.en-mode div[lang="en"], body.en-mode h1[lang="en"], body.en-mode p[lang="en
         padding-right: 20px;
     }
 }
+.hero-bg-placeholder {
+    /* เปลี่ยน 'images/hero.png' เป็น path รูปของคุณ */
+    background-image: linear-gradient(rgba(15, 44, 89, 0.7), rgba(15, 44, 89, 0.7)), url('images/your-hero-image.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* (Optional) เพิ่มลูกเล่น parallax */
+    min-height: 80vh; /* กำหนดความสูงของ Hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
