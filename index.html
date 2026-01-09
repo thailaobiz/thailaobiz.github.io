@@ -5,54 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thai Lao E-Biz Advisor - ปลดล็อกตลาดลาวฉบับคนวงใน</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* CSS Reset & Basic Setup */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Sarabun', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { color: #333; line-height: 1.6; }
+        
+        /* Utility Classes */
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 80px 0; }
+        .text-center { text-align: center; }
+        .bg-light { background-color: #f8f9fa; }
+        .bg-dark { background-color: #0f2c59; color: white; }
+
+        /* Navigation */
+        header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .nav-links { display: flex; list-style: none; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #333; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: #d4a373; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        .lang-btn { background: #0f2c59; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+
+        /* Hero Section */
+        .hero-section { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 90px; }
         .hero-bg-placeholder {
-            background-color: #0f2c59; /* สีสำรอง */
-            /* ใส่รูป Background ตรงนี้ */
-            background-image: linear-gradient(rgba(15, 44, 89, 0.85), rgba(15, 44, 89, 0.7)), url('images/hero.png');
+            background-color: #0f2c59;
+            /* Linear Gradient ซ้อนทับภาพเพื่อให้ตัวหนังสืออ่านง่าย */
+            background-image: linear-gradient(rgba(15, 44, 89, 0.85), rgba(15, 44, 89, 0.7)), url('images/hero.png'); 
             background-size: cover;
             background-position: center;
         }
-        .process-step {
-            position: relative;
-            padding: 20px;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            background: white;
-            height: 100%;
+        .hero-content { max-width: 800px; padding: 20px; }
+        .btn-primary { display: inline-block; padding: 12px 30px; background: #d4a373; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; margin-top: 20px; }
+        .btn-primary:hover { background: #b88655; }
+
+        /* About & Stats */
+        .about-wrapper { display: flex; gap: 50px; align-items: center; }
+        .about-text { flex: 1; }
+        .about-img-box { flex: 1; }
+        .img-placeholder { background: #ddd; display: flex; align-items: center; justify-content: center; text-align: center; color: #666; border-radius: 10px; }
+        .img-cover { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .stat-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid #d4a373; margin-bottom: 20px; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .service-card { background: white; padding: 30px; border-radius: 10px; border: 1px solid #eee; text-align: center; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* Process Steps */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .process-step { position: relative; padding: 30px; border: 1px solid #eee; border-radius: 10px; background: white; height: 100%; transition: 0.3s; }
+        .process-step:hover { border-color: #d4a373; }
+        .number-badge { background: #d4a373; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; }
+
+        /* Contact */
+        .contact-box { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; max-width: 600px; margin: 0 auto; }
+        .contact-item { margin: 20px 0; font-size: 1.2rem; }
+        .contact-item i { color: #d4a373; margin-right: 10px; width: 30px; }
+
+        /* Footer */
+        footer { background: #0a1f3d; color: #ccc; padding: 30px 0; text-align: center; font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 90px; left: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .about-wrapper { flex-direction: column; }
+            .hero-section h1 { font-size: 1.8rem; }
         }
-        .number-badge {
-            background: #d4a373; /* var(--accent) fallback */
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-        .stat-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid #d4a373; /* var(--accent) fallback */
-        }
+
+        /* Language Hiding Logic */
+        [lang="en"] { display: none; } /* Default hide English */
+        body.lang-en [lang="th"] { display: none; }
+        body.lang-en [lang="en"] { display: inline; } /* Elements inside text */
+        body.lang-en div[lang="en"], 
+        body.lang-en h1[lang="en"], 
+        body.lang-en h2[lang="en"], 
+        body.lang-en h3[lang="en"], 
+        body.lang-en p[lang="en"],
+        body.lang-en span[lang="en"] { display: block; }
+        body.lang-en span[lang="en"] { display: inline; }
     </style>
 </head>
-<body>
+<body class="lang-th"> <header style="height: 90px; display: flex; align-items: center;"> 
+        <nav style="height: 100%; padding: 0 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; max-width: 1140px; margin: 0 auto;">
+            <div class="logo" style="font-weight: bold; font-size: 1.5rem; color: #0f2c59;">
+                Thai Lao <span style="color: #d4a373;">E-Biz</span>
+            </div>
 
-    <header style="height: 90px; display: flex; align-items: center;"> 
-        <nav style="height: 100%; padding: 0 20px;">
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#market-reality"><span lang="th">ตลาดลาววันนี้</span><span lang="en">Market Reality</span></a></li>
                 <li><a href="#services"><span lang="th">บริการ</span><span lang="en">Services</span></a></li>
                 <li><a href="#process"><span lang="th">ขั้นตอน</span><span lang="en">Process</span></a></li>
@@ -66,7 +113,7 @@
         <div class="hero-content">
             
             <img src="images/Logo2.jpg" alt="Logo Big" 
-                 style="height: 150px; width: auto; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                 style="height: 120px; width: auto; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
             
             <h1 lang="th">เลิก "ตำน้ำพริกละลายแม่น้ำโขง"<br>เจาะตลาดลาว ยุค 2026 ต้องแม่นยำ</h1>
             <h1 lang="en">Stop Burning Budget.<br>Target the Real Purchasing Power in Laos.</h1>
@@ -80,7 +127,7 @@
                 I help you reach the <strong>"Real Wealth"</strong> with inside strategies.
             </p>
             
-            <a href="#market-reality" class="btn-primary" style="margin-top: 30px;">
+            <a href="#market-reality" class="btn-primary">
                 <span lang="th">ดูความจริงที่คุณต้องรู้</span><span lang="en">See the Reality</span>
             </a>
         </div>
@@ -90,70 +137,77 @@
         <div class="container">
             <div class="about-wrapper">
                 <div class="about-text">
-                    <h2 class="section-title">
+                    <h2 class="section-title" style="margin-bottom: 30px;">
                         <span lang="th">กับดัก "ภาพจำเดิมๆ" ที่ทำให้แบรนด์ไทยเจ็บตัว</span>
                         <span lang="en">The "Old Perception" Trap</span>
                     </h2>
                     
-                    <div class="stat-card" style="margin-bottom: 20px;">
+                    <div class="stat-card">
                         <h3 style="color: #c0392b;"><i class="fas fa-arrow-down"></i> <span lang="th">90% ตลาด Mass กำลังซื้อหดหาย</span><span lang="en">90% Mass Market Collapsed</span></h3>
-                        <p lang="th">ภาวะเงินเฟ้อรุนแรงและค่าเงินกีบอ่อนตัว ทำให้สินค้านำเข้าจากไทย "แพงขึ้น 2-3 เท่า" ในสายตาคนทั่วไป</p>
-                        <p lang="en">Hyperinflation has made Thai products 2-3 times more expensive for the general public.</p>
+                        <p lang="th" style="margin-top: 10px;">ภาวะเงินเฟ้อรุนแรงและค่าเงินกีบอ่อนตัว ทำให้สินค้านำเข้าจากไทย "แพงขึ้น 2-3 เท่า" ในสายตาคนทั่วไป</p>
+                        <p lang="en" style="margin-top: 10px;">Hyperinflation has made Thai products 2-3 times more expensive for the general public.</p>
                     </div>
 
                     <div class="stat-card">
                         <h3 style="color: #27ae60;"><i class="fas fa-arrow-up"></i> <span lang="th">10% ตลาด Niche รวยสวนกระแส</span><span lang="en">10% Niche Market is Booming</span></h3>
-                        <p lang="th">กลุ่ม Elite, เจ้าของธุรกิจ และข้าราชการระดับสูงที่มีรายได้เป็นสกุลเงินต่างประเทศ ยังคงใช้จ่ายหนักและโหยหาสินค้าพรีเมียม</p>
-                        <p lang="en">The Elite class, earning in foreign currencies, maintains strong purchasing power and craves premium goods.</p>
+                        <p lang="th" style="margin-top: 10px;">กลุ่ม Elite, เจ้าของธุรกิจ และข้าราชการระดับสูงที่มีรายได้เป็นสกุลเงินต่างประเทศ ยังคงใช้จ่ายหนักและโหยหาสินค้าพรีเมียม</p>
+                        <p lang="en" style="margin-top: 10px;">The Elite class, earning in foreign currencies, maintains strong purchasing power and craves premium goods.</p>
                     </div>
                 </div>
                 <div class="about-img-box">
-                    <div class="img-placeholder" style="height: 400px;">
-                        [กราฟแสดงค่าเงินเฟ้อ vs ยอดขายรถหรู]<br>
-                        Inflation vs Luxury Spending Graph<br>
-                        (Size: 500x400px)
+                    <div class="img-placeholder" style="height: 400px; background: #e9ecef;">
+                        <div style="padding: 20px;">
+                            <i class="fas fa-chart-line" style="font-size: 4rem; color: #0f2c59; margin-bottom: 20px;"></i>
+                            <p>[Graph: Inflation vs Luxury Car Sales]</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding">
+    <section id="services" class="section-padding">
         <div class="container text-center">
             <h2 class="section-title">
                 <span lang="th">ผมไม่ได้แค่ "ยิงแอด" แต่ผมช่วยคุณ "หาปลาวาฬ"</span>
                 <span lang="en">I Don't Just Run Ads, I Find You "Whales"</span>
             </h2>
-            <p lang="th" style="max-width: 800px; margin: 0 auto 40px;">
+            <p lang="th" style="max-width: 800px; margin: 20px auto 40px;">
                 ประสบการณ์ 10 ปี ในฐานะผู้บริหารศูนย์รถยนต์ (สินค้ามูลค่าสูง) ทำให้ผมเข้าใจพฤติกรรมของ "คนรวยลาว" 
                 ว่าเขาอยู่ที่ไหน เสพสื่ออะไร และตัดสินใจซื้ออย่างไร
             </p>
-            <p lang="en" style="max-width: 800px; margin: 0 auto 40px;">
+            <p lang="en" style="max-width: 800px; margin: 20px auto 40px;">
                 10 years managing luxury car showrooms taught me exactly where the Lao Elite are, 
                 what media they consume, and how they make purchasing decisions.
             </p>
 
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="img-placeholder" style="height: 200px; margin-bottom: 15px;">
-                        [รูปคนรวยลาว/ไลฟ์สไตล์หรู]<br>Lao Elite Lifestyle
+                    <div class="img-placeholder" style="height: 200px; margin-bottom: 15px; background: #f1f1f1;">
+                        <i class="fas fa-crown" style="font-size: 3rem; color: #d4a373;"></i>
                     </div>
                     <h3 lang="th">เจาะกลุ่ม High Spending</h3>
                     <h3 lang="en">Target High Spenders</h3>
+                    <p lang="th" style="font-size: 0.9rem; margin-top: 10px;">คัดกรองกลุ่มเป้าหมายที่มีกำลังซื้อจริง ไม่เสียงบไปกับยอด Like ที่ไม่มีคุณภาพ</p>
+                    <p lang="en" style="font-size: 0.9rem; margin-top: 10px;">Filter only audiences with real purchasing power. Stop wasting budget on vanity metrics.</p>
                 </div>
                 <div class="service-card">
-                    <div class="img-placeholder" style="height: 200px; margin-bottom: 15px;">
-                        [รูปกราฟิกกลยุทธ์ Premium]<br>Premium Strategy
+                    <div class="img-placeholder" style="height: 200px; margin-bottom: 15px; background: #f1f1f1;">
+                        <i class="fas fa-gem" style="font-size: 3rem; color: #d4a373;"></i>
                     </div>
                     <h3 lang="th">วางตำแหน่งสินค้าให้ดู "แพง"</h3>
                     <h3 lang="en">Premium Positioning</h3>
+                    <p lang="th" style="font-size: 0.9rem; margin-top: 10px;">ปรับภาพลักษณ์ คอนเทนต์ และภาษา ให้ตรงจริตคนลาวระดับบน</p>
+                    <p lang="en" style="font-size: 0.9rem; margin-top: 10px;">Tailor image, content, and language to match the taste of the Lao Elite.</p>
                 </div>
                 <div class="service-card">
-                    <div class="img-placeholder" style="height: 200px; margin-bottom: 15px;">
-                        [รูปการขนส่ง/โลจิสติกส์]<br>Logistics & Trust
+                    <div class="img-placeholder" style="height: 200px; margin-bottom: 15px; background: #f1f1f1;">
+                        <i class="fas fa-truck" style="font-size: 3rem; color: #d4a373;"></i>
                     </div>
-                    <h3 lang="th">ระบบส่งของที่ไว้ใจได้</h3>
-                    <h3 lang="en">Trusted Logistics</h3>
+                    <h3 lang="th">ปิดการขาย & โลจิสติกส์</h3>
+                    <h3 lang="en">Closing & Logistics</h3>
+                    <p lang="th" style="font-size: 0.9rem; margin-top: 10px;">แนะนำระบบชำระเงินและขนส่งที่ลูกค้าลาว "กล้าโอน"</p>
+                    <p lang="en" style="font-size: 0.9rem; margin-top: 10px;">Advising on payment and logistics systems that build trust for instant transfers.</p>
                 </div>
             </div>
         </div>
@@ -163,12 +217,137 @@
         <div class="container">
             <div class="about-wrapper">
                 <div class="about-img-box">
-                     <img src="images/profile.jpg" alt="Pawach Kulteerajesada" class="img-cover" style="height: 500px;">
+                     <img src="images/profile.jpg" alt="Pawach Kulteerajesada" class="img-cover" style="height: 400px; object-position: top;">
                 </div>
                 <div class="about-text">
-                    <h2 class="section-title">
+                    <h2 class="section-title" style="margin-bottom: 20px;">
                         <span lang="th">เบื้องหลังความสำเร็จ</span>
-                        <span lang="en">Meet Your Strategist: </span>
+                        <span lang="en">Meet Your Strategist</span>
                     </h2>
                     
-                    <h3 style="color: #0
+                    <h3 style="color: #0f2c59; margin-bottom: 5px;">ภวช กุลธีระเจษฎา (Pawach Kulteerajesada)</h3>
+                    <p style="color: #d4a373; font-weight: bold; margin-bottom: 20px;">
+                        <span lang="th">ผู้เชี่ยวชาญการตลาดลาว & อดีตผู้บริหารศูนย์รถยนต์</span>
+                        <span lang="en">Lao Market Expert & Ex-Showroom Manager</span>
+                    </p>
+
+                    <p lang="th" style="margin-bottom: 15px;">
+                        "ตลอด 10 ปีในเวียงจันทน์ ผมเห็นแบรนด์ไทยเข้ามาแล้วก็ไป... เพราะไม่เข้าใจว่าคนที่มีเงินจริงๆ เขาซื้ออะไร"
+                    </p>
+                    <p lang="en" style="margin-bottom: 15px;">
+                        "Throughout 10 years in Vientiane, I've seen Thai brands come and go... simply because they didn't understand what the wealthy actually buy."
+                    </p>
+                    
+                    <ul class="fa-ul" style="margin-left: 20px;">
+                        <li style="margin-bottom: 10px;"><span class="fa-li"><i class="fas fa-check-circle" style="color: #27ae60;"></i></span>Ex-Showroom Manager (MG & Mazda Vientiane)</li>
+                        <li style="margin-bottom: 10px;"><span class="fa-li"><i class="fas fa-check-circle" style="color: #27ae60;"></i></span>10+ Years Experience in Laos</li>
+                        <li><span class="fa-li"><i class="fas fa-check-circle" style="color: #27ae60;"></i></span>Specialized in High-Ticket Sales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center" style="margin-bottom: 40px;">
+                <span lang="th">ขั้นตอนการทำงาน</span>
+                <span lang="en">Working Process</span>
+            </h2>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="number-badge">1</div>
+                    <h3 lang="th">วิเคราะห์ธุรกิจ</h3>
+                    <h3 lang="en">Audit</h3>
+                    <p lang="th" style="font-size: 0.9rem; color: #666; margin-top: 10px;">ตรวจสอบความพร้อมของสินค้าและเพจ เพื่อดูความเป็นไปได้ในตลาด Niche ของลาว</p>
+                    <p lang="en" style="font-size: 0.9rem; color: #666; margin-top: 10px;">Audit product and page readiness for the Lao niche market.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="number-badge">2</div>
+                    <h3 lang="th">วางกลยุทธ์</h3>
+                    <h3 lang="en">Strategy</h3>
+                    <p lang="th" style="font-size: 0.9rem; color: #666; margin-top: 10px;">กำหนดกลุ่มเป้าหมาย (Audience) และทำ Content Direction ให้ดูพรีเมียม</p>
+                    <p lang="en" style="font-size: 0.9rem; color: #666; margin-top: 10px;">Define premium audience targets and content direction.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="number-badge">3</div>
+                    <h3 lang="th">ยิงแอด & ปรับแต่ง</h3>
+                    <h3 lang="en">Execution</h3>
+                    <p lang="th" style="font-size: 0.9rem; color: #666; margin-top: 10px;">ยิงโฆษณาด้วยเทคนิคเฉพาะเจาะจง และมอนิเตอร์ผลลัพธ์รายวัน</p>
+                    <p lang="en" style="font-size: 0.9rem; color: #666; margin-top: 10px;">Launch targeted ads and monitor daily performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding bg-dark" style="text-align: center;">
+        <div class="container">
+            <h2 class="section-title" style="color: white; margin-bottom: 20px;">
+                <span lang="th">พร้อมรุกตลาดลาวหรือยัง?</span>
+                <span lang="en">Ready to Expand?</span>
+            </h2>
+            <p lang="th" style="margin-bottom: 40px; color: #ddd;">ปรึกษาเบื้องต้นฟรี เพื่อประเมินความเป็นไปได้</p>
+            <p lang="en" style="margin-bottom: 40px; color: #ddd;">Free initial consultation to assess feasibility.</p>
+            
+            <div class="contact-box">
+                <h3 style="margin-bottom: 20px; color: #0f2c59;">Pawach Kulteerajesada</h3>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i> <a href="https://wa.me/819054970248" style="color: #333; text-decoration: none;">+81 90 5497 0248</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i> <a href="tel:+8562051984552" style="color: #333; text-decoration: none;">+856 20 5198 4552</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i> <a href="https://ointernationalgroup.com/" style="color: #333; text-decoration: none;">ointernationalgroup.com</a>
+                </div>
+                
+                <a href="https://wa.me/819054970248" class="btn-primary" style="margin-top: 20px; width: 100%;">
+                    <i class="fab fa-whatsapp"></i> <span lang="th">ทักแชทเลย</span><span lang="en">Chat Now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Language Toggle Script
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const body = document.body;
+
+        langToggleBtn.addEventListener('click', () => {
+            if (body.classList.contains('lang-th')) {
+                body.classList.remove('lang-th');
+                body.classList.add('lang-en');
+                langToggleBtn.innerText = 'TH';
+            } else {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-th');
+                langToggleBtn.innerText = 'EN';
+            }
+        });
+
+        // 2. Mobile Menu Toggle Script
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
