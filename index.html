@@ -747,38 +747,5 @@
         <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
     </footer>
 
-            // Language toggle logic
-        langToggle.addEventListener('click', () => {
-            if (body.classList.contains('lang-th')) {
-                body.classList.remove('lang-th');
-                body.classList.add('lang-en');
-                langToggle.innerText = 'TH';
-            } else {
-                body.classList.remove('lang-en');
-                body.classList.add('lang-th');
-                langToggle.innerText = 'EN';
-            }
-        });
-
-        // Form submission logic
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btn.disabled = true;
-            btn.innerText = 'Sending...';
-
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    btn.style.display = 'none';
-                    successMsg.style.display = 'block';
-                    form.reset();
-                })
-                .catch(error => {
-                    btn.disabled = false;
-                    btn.innerText = 'Try Again';
-                    alert('Error! โปรดลองใหม่อีกครั้ง');
-                });
-        });
-    </script>
-    <script src="script.js"></script>
-</body>
+        </body>
 </html>
