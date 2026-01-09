@@ -1,19 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. Language Toggle System ---
+    // --- 1. ระบบสลับภาษา (Fixed Logic) ---
     const langBtn = document.getElementById('lang-toggle');
     const body = document.body;
 
-    // Load saved language
-    const currentLang = localStorage.getItem('language');
-    if (currentLang === 'en') {
+    // ตรวจสอบภาษาที่บันทึกไว้
+    if (localStorage.getItem('language') === 'en') {
         body.classList.add('en-mode');
         langBtn.textContent = 'TH';
-    } else {
-        langBtn.textContent = 'EN';
     }
 
-    langBtn.addEventListener('click', () => {
+    langBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         body.classList.toggle('en-mode');
         
         if (body.classList.contains('en-mode')) {
@@ -25,33 +23,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 2. Mobile Menu Toggle (สำคัญมากสำหรับมือถือ) ---
+    // --- 2. ระบบเมนูมือถือ (Fixed ID) ---
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active'); // สลับคลาส active เพื่อโชว์/ซ่อน
+            navLinks.classList.toggle('active');
             
-            // เปลี่ยนไอคอน (ถ้าอยากให้ดูโปร)
+            // เปลี่ยนไอคอน Hamburger <-> กากบาท
             const icon = menuToggle.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times'); // เปลี่ยนเป็นกากบาท
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
 
-        // กดลิงก์แล้วให้เมนูหุบเก็บเอง
+        // คลิกที่ลิงก์แล้วให้เมนูปิดตัวลงเอง
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
             });
+        });
+    }
+
+    // --- 3. Google Sheets Form (เดิม) ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec'; // ใส่ URL เดิมของคุณ
+    const form = document.getElementById('google-sheet-form');
+    if (form) {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const successMsg = document.getElementById('form-success');
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btn.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    form.reset();
+                })
+                .catch(error => {
+                    btn.disabled = false;
+                    btn.innerText = 'Try Again';
+                });
         });
     }
 });
