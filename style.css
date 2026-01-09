@@ -295,48 +295,53 @@ body.en-mode div[lang="en"], body.en-mode h1[lang="en"], body.en-mode p[lang="en
     .contact-info, .contact-form { flex: 1; }
 }
 
-/* --- แก้ไขเฉพาะส่วน SERVICES บนมือถือ (ให้สวยเหมือน Card) --- */
+/* --- แก้ไขเฉพาะส่วน SERVICES บนมือถือ (Updated Fix) --- */
 
 /* 1. ปรับ Container ของแต่ละบริการให้เป็น "การ์ด" */
 #services .about-wrapper {
     display: flex;
-    flex-direction: column; /* เรียงแนวตั้งเสมอ */
+    flex-direction: column !important; /* ⭐ เติม !important เพื่อบังคับให้เรียงแนวตั้งเสมอ */
     background: white;
-    border-radius: 15px; /* มุมมน */
-    overflow: hidden; /* ตัดขอบรูป */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* เงานุ่มๆ */
-    margin-bottom: 30px !important; /* เว้นระยะห่างระหว่างการ์ด */
-    padding-bottom: 25px; /* เว้นขอบล่างให้หายใจ */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 30px !important;
+    padding-bottom: 25px;
+    height: auto !important; /* ป้องกันความสูงเพี้ยน */
 }
 
-/* 2. จัดการรูปภาพในบริการ */
+/* 2. จัดการรูปภาพ (ให้เต็มความกว้างด้านบน) */
 #services .about-img-box {
-    width: 100%;
-    height: 200px; /* ฟิกซ์ความสูงรูปบนมือถือ ไม่ให้ยืดเกินไป */
+    width: 100% !important; /* บังคับเต็มจอ */
+    height: 200px !important; /* ฟิกซ์ความสูง */
+    margin: 0 !important; /* ลบระยะห่างที่อาจติดมา */
 }
 
 #services .about-img-box .img-placeholder,
 #services .about-img-box img {
-    border-radius: 0; /* ลบมุมมนออก เพราะจะให้เต็มขอบบน */
+    border-radius: 0 !important; /* ลบมุมมนออก */
     height: 100% !important;
-    width: 100%;
+    width: 100% !important;
     border: none;
+    object-fit: cover;
 }
 
 /* 3. จัดการข้อความ */
 #services .about-text {
-    padding: 20px 20px 0 20px; /* เพิ่มช่องว่างรอบข้อความ */
-    text-align: center; /* จัดกลางให้อ่านง่าย */
+    padding: 25px 20px 0 20px !important; /* ⭐ เพิ่มระยะห่างด้านบน 25px ให้ไม่เบียดรูป */
+    text-align: center;
+    width: 100% !important;
 }
 
 #services .about-text h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--primary);
     margin-bottom: 10px;
+    margin-top: 0; /* ลบระยะหัวข้อที่อาจดันขึ้นไป */
 }
 
 #services .about-text ul {
-    text-align: left; /* ลิสต์รายการให้ชิดซ้ายเหมือนเดิม */
+    text-align: left;
     margin-top: 15px;
     padding-left: 10px;
     background: #f8f9fa;
@@ -347,12 +352,11 @@ body.en-mode div[lang="en"], body.en-mode h1[lang="en"], body.en-mode p[lang="en
 #services .about-text ul li {
     margin-bottom: 8px;
     font-size: 0.95rem;
-    list-style: none; /* ลบจุดเดิม */
+    list-style: none;
     position: relative;
     padding-left: 20px;
 }
 
-/* ใส่จุด Bullet สวยๆ แทน */
 #services .about-text ul li::before {
     content: "•";
     color: var(--accent);
@@ -361,6 +365,49 @@ body.en-mode div[lang="en"], body.en-mode h1[lang="en"], body.en-mode p[lang="en
     left: 0;
 }
 
+/* --- ส่วน Desktop (จอใหญ่) --- */
+@media (min-width: 768px) {
+    #services .about-wrapper {
+        flex-direction: row !important; /* กลับมาเรียงแนวนอน */
+        box-shadow: none;
+        background: transparent;
+        padding-bottom: 0;
+        margin-bottom: 80px !important;
+        align-items: center;
+    }
+
+    /* อันนี้สำคัญ! สั่งสลับด้านเฉพาะบน PC */
+    #services .about-wrapper.reverse {
+        flex-direction: row-reverse !important; 
+    }
+
+    #services .about-img-box {
+        height: auto !important;
+        flex: 1;
+        width: auto !important;
+    }
+    
+    #services .about-img-box img,
+    #services .about-img-box .img-placeholder {
+        border-radius: 10px !important;
+        height: 300px !important;
+    }
+
+    #services .about-text {
+        flex: 1;
+        padding: 0 0 0 40px !important;
+        text-align: left;
+    }
+
+    #services .about-wrapper.reverse .about-text {
+        padding: 0 40px 0 0 !important;
+    }
+    
+    #services .about-text ul {
+        background: transparent;
+        padding: 0;
+    }
+}
 /* --- ส่วน Desktop (จอใหญ่) ให้กลับไปเป็นแบบเดิม --- */
 @media (min-width: 768px) {
     #services .about-wrapper {
