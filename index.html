@@ -7,15 +7,19 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* CSS เฉพาะกิจสำหรับ Section ใหม่ */
+        /* CSS สำหรับควบคุมการแสดงผลภาษา */
+        [lang="en"] { display: none; }
+        body.lang-en [lang="th"] { display: none; }
+        body.lang-en [lang="en"] { display: inline; }
+        body.lang-en div[lang="en"], body.lang-en p[lang="en"], body.lang-en h1[lang="en"], body.lang-en h2[lang="en"], body.lang-en h3[lang="en"], body.lang-en h4[lang="en"] { display: block; }
+
         .hero-bg-placeholder {
             background-color: #0f2c59;
-            background-image: linear-gradient(rgba(15, 44, 89, 0.9), rgba(15, 44, 89, 0.7)), url('images/hero.jpg'); /* เปลี่ยนเป็น hero.png หรือ .jpg ตามไฟล์จริง */
+            background-image: linear-gradient(rgba(15, 44, 89, 0.9), rgba(15, 44, 89, 0.7)), url('images/hero.jpg');
             background-size: cover;
             background-position: center;
         }
         
-        /* Stats Box Style */
         .stat-box {
             background: white;
             padding: 25px;
@@ -32,7 +36,6 @@
             margin-bottom: 5px;
         }
 
-        /* Benefit List Style */
         .benefit-item {
             display: flex;
             align-items: flex-start;
@@ -51,7 +54,6 @@
             font-size: 1.2rem;
         }
 
-        /* Checklist Style */
         .checklist-container {
             background: #0f2c59;
             color: white;
@@ -75,7 +77,6 @@
             color: #d4a373;
         }
         
-        /* Image Placeholder Standard */
         .img-placeholder {
             background-color: #e9ecef;
             color: #6c757d;
@@ -96,10 +97,10 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-th">
 
     <header style="height: 90px; display: flex; align-items: center;"> 
-        <nav style="height: 100%; padding: 0 20px;">
+        <nav style="height: 100%; padding: 0 20px; width: 100%; display: flex; justify-content: space-between; align-items: center;">
             <a href="#hero" class="logo" style="display: flex; align-items: center; height: 100%;">
                 <img src="images/logo.png" 
                      alt="Thai Lao E-Biz Advisor Logo" 
@@ -179,9 +180,9 @@
     <section class="section-padding">
         <div class="container">
             <div class="about-wrapper">
-               <div class="about-img-box">
-    <img src="images/section1.png" alt="" 
-         style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div class="about-img-box">
+                    <img src="images/section1.png" alt="Problem Illustration" 
+                         style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">
@@ -190,17 +191,26 @@
                     </h2>
                     <ul style="list-style: none; margin-top: 20px;">
                         <li style="margin-bottom: 15px; font-size: 1.1rem;">
-                            ❌ <strong>ยิงแอดไปลาว ไลค์เยอะแต่ไม่มียอดโอน:</strong> เพราะ Content ดึงดูดแต่ "คนไม่มีกำลังซื้อ"
+                            ❌ <strong><span lang="th">ยิงแอดไปลาว ไลค์เยอะแต่ไม่มียอดโอน:</span><span lang="en">Running ads to Laos, lots of likes but no sales:</span></strong> 
+                            <span lang="th">เพราะ Content ดึงดูดแต่ "คนไม่มีกำลังซื้อ"</span>
+                            <span lang="en">Because the content attracts those without purchasing power.</span>
                         </li>
                         <li style="margin-bottom: 15px; font-size: 1.1rem;">
-                            ❌ <strong>เจรจาตัวแทนไม่จบ:</strong> ตัวแทนไม่กล้าสต๊อกของ ขอเครดิต หรือหายเงียบ
+                            ❌ <strong><span lang="th">เจรจาตัวแทนไม่จบ:</span><span lang="en">Failed agent negotiations:</span></strong> 
+                            <span lang="th">ตัวแทนไม่กล้าสต๊อกของ ขอเครดิต หรือหายเงียบ</span>
+                            <span lang="en">Agents afraid to stock, asking for credit, or disappearing.</span>
                         </li>
                         <li style="margin-bottom: 15px; font-size: 1.1rem;">
-                            ❌ <strong>ส่งของแล้วเงินจม:</strong> ติดปัญหาขนส่ง เก็บเงินปลายทางไม่ได้ เงินเข้าช้า
+                            ❌ <strong><span lang="th">ส่งของแล้วเงินจม:</span><span lang="en">Stuck cash flow after shipping:</span></strong> 
+                            <span lang="th">ติดปัญหาขนส่ง เก็บเงินปลายทางไม่ได้ เงินเข้าช้า</span>
+                            <span lang="en">Logistics issues, COD unavailable, or slow payments.</span>
                         </li>
                     </ul>
                     <p lang="th" style="margin-top: 20px; font-weight: bold; color: #0f2c59;">
                         "ผมไม่ได้มาขายฝัน แต่ผมมาช่วยคุณอุดรูรั่ว และสร้างท่อส่งเงินใหม่ที่ไหลลื่นกว่าเดิม"
+                    </p>
+                    <p lang="en" style="margin-top: 20px; font-weight: bold; color: #0f2c59;">
+                        "I'm not selling a dream. I'm here to plug the leaks and create a smoother cash flow for you."
                     </p>
                 </div>
             </div>
@@ -220,118 +230,121 @@
                         <div class="benefit-icon"><i class="fas fa-bullseye"></i></div>
                         <div>
                             <h4 lang="th">ความแม่นยำ (Precision)</h4>
+                            <h4 lang="en">Precision</h4>
                             <p lang="th">ไม่ต้องหว่านเงินทิ้ง เข้าถึงกลุ่มลูกค้าที่มีกำลังซื้อจริง (Real Demand) ในเวียงจันทน์และหัวเมืองใหญ่</p>
+                            <p lang="en">Stop wasting budget. Reach the real demand in Vientiane and major cities.</p>
                         </div>
                     </div>
                     <div class="benefit-item">
                         <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
                         <div>
                             <h4 lang="th">ลดความเสี่ยง (Risk Reduction)</h4>
+                            <h4 lang="en">Risk Reduction</h4>
                             <p lang="th">รู้ทันกฎหมาย ภาษี และเส้นทางขนส่งที่ปลอดภัย ของไม่หาย เงินไม่จม</p>
+                            <p lang="en">Stay informed on laws, taxes, and safe logistics. No lost goods or stuck funds.</p>
                         </div>
                     </div>
                     <div class="benefit-item">
                         <div class="benefit-icon"><i class="fas fa-clock"></i></div>
                         <div>
                             <h4 lang="th">ประหยัดเวลา (Time Saving)</h4>
+                            <h4 lang="en">Time Saving</h4>
                             <p lang="th">ไม่ต้องลองผิดลองถูกเอง ใช้ประสบการณ์ 10 ปีของผม เป็นทางลัดให้ธุรกิจคุณ</p>
+                            <p lang="en">No more trial and error. Use my 10 years of experience as your shortcut.</p>
                         </div>
                     </div>
                      <div class="benefit-item">
                         <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
                         <div>
                             <h4 lang="th">ยอดขายที่ยั่งยืน (Sustainable Growth)</h4>
+                            <h4 lang="en">Sustainable Growth</h4>
                             <p lang="th">สร้างฐานลูกค้าประจำ ไม่ใช่แค่ขายครั้งเดียวจบ ด้วยกลยุทธ์สร้าง Brand Loyalty</p>
+                            <p lang="en">Build a loyal customer base with strategies for long-term growth.</p>
                         </div>
                     </div>
                 </div>
-               <div class="about-img-box">
-                        <img src="images/section2.jpg" 
-                         alt="" 
+                <div class="about-img-box">
+                    <img src="images/section2.jpg" alt="Success Image" 
                          style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <section id="services" class="section-padding">
-    <div class="container">
-        <h2 class="section-title text-center" style="margin-bottom: 50px;">
-            <span lang="th">บริการแบบเจาะลึก</span>
-            <span lang="en">In-Depth Services</span>
-        </h2>
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center" style="margin-bottom: 50px;">
+                <span lang="th">บริการแบบเจาะลึก</span>
+                <span lang="en">In-Depth Services</span>
+            </h2>
 
-        <div class="about-wrapper" style="margin-bottom: 60px;">
-            <div class="about-img-box">
-                <img src="images/section3.jpg" 
-                     alt="Strategic Page Audit" 
-                     style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="about-wrapper" style="margin-bottom: 60px;">
+                <div class="about-img-box">
+                    <img src="images/section3.jpg" alt="Strategic Page Audit" 
+                         style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+                <div class="about-text">
+                    <h3 lang="th" style="color: #0f2c59; margin-bottom: 15px;">1. Strategic Page Audit (ผ่าตัดเพจ)</h3>
+                    <h3 lang="en" style="color: #0f2c59; margin-bottom: 15px;">1. Strategic Page Audit</h3>
+                    
+                    <p lang="th">บริการตรวจสุขภาพเพจ Facebook อย่างละเอียด เพื่อเตรียมความพร้อมก่อนยิงแอด</p>
+                    <p lang="en">Comprehensive Facebook Page audit to ensure readiness before running ads.</p>
+
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li><strong>Content Localization:</strong> <span lang="th">ตรวจสอบภาษาลาว คำแสลง และบริบททางวัฒนธรรม</span><span lang="en">Check Lao language, slang, and cultural context.</span></li>
+                        <li><strong>Visual Identity:</strong> <span lang="th">ปรับภาพลักษณ์ให้ดู "Premium" ในสายตาคนลาว</span><span lang="en">Enhance visual identity to look "Premium" for Lao audience.</span></li>
+                        <li><strong>Competitor Analysis:</strong> <span lang="th">วิเคราะห์คู่แข่งในตลาดเดียวกัน เพื่อหาช่องว่างในการทำกำไร</span><span lang="en">Analyze competitors to find profitable market gaps.</span></li>
+                    </ul>
+                </div>
             </div>
-            <div class="about-text">
-                <h3 lang="th" style="color: #0f2c59; margin-bottom: 15px;">1. Strategic Page Audit (ผ่าตัดเพจ)</h3>
-                <h3 lang="en" style="color: #0f2c59; margin-bottom: 15px;">1. Strategic Page Audit</h3>
-                
-                <p lang="th">บริการตรวจสุขภาพเพจ Facebook อย่างละเอียด เพื่อเตรียมความพร้อมก่อนยิงแอด</p>
-                <p lang="en">Comprehensive Facebook Page audit to ensure readiness before running ads.</p>
 
-                <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
-                    <li><strong>Content Localization:</strong> <span lang="th">ตรวจสอบภาษาลาว คำแสลง และบริบททางวัฒนธรรม</span><span lang="en">Check Lao language, slang, and cultural context.</span></li>
-                    <li><strong>Visual Identity:</strong> <span lang="th">ปรับภาพลักษณ์ให้ดู "Premium" ในสายตาคนลาว</span><span lang="en">Enhance visual identity to look "Premium" for Lao audience.</span></li>
-                    <li><strong>Competitor Analysis:</strong> <span lang="th">วิเคราะห์คู่แข่งในตลาดเดียวกัน เพื่อหาช่องว่างในการทำกำไร</span><span lang="en">Analyze competitors to find profitable market gaps.</span></li>
-                </ul>
+            <div class="about-wrapper" style="flex-direction: row-reverse; margin-bottom: 60px;">
+                <div class="about-img-box">
+                     <img src="images/section4.jpg" alt="Cross-Border Operations" 
+                          style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+                <div class="about-text">
+                    <h3 lang="th" style="color: #0f2c59; margin-bottom: 15px;">2. Cross-Border Operations (ระบบหลังบ้าน)</h3>
+                    <h3 lang="en" style="color: #0f2c59; margin-bottom: 15px;">2. Cross-Border Operations</h3>
+
+                    <p lang="th">วางระบบการขายข้ามแดนให้ลื่นไหล เหมือนขายในไทย</p>
+                    <p lang="en">Seamless cross-border sales system setup, just like selling domestically.</p>
+
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Logistics Partner:</strong> <span lang="th">แนะนำบริษัทขนส่งที่เชี่ยวชาญ (Door-to-Door / รับหน้าด่าน)</span><span lang="en">Recommend expert logistics partners.</span></li>
+                        <li><strong>Payment Gateway:</strong> <span lang="th">โซลูชั่นการรับชำระเงิน (BCEL One / Thai QR) ที่เงินเข้าบัญชีคุณทันที</span><span lang="en">Instant payment solutions (BCEL One / Thai QR).</span></li>
+                        <li><strong>Stock Management:</strong> <span lang="th">แนะนำวิธีบริหารสต๊อกโดยไม่ต้องเสี่ยงฝากของไว้ที่ลาวเยอะเกินไป</span><span lang="en">Stock management advice to minimize risk.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="about-wrapper">
+                <div class="about-img-box">
+                    <img src="images/section5.jpg" alt="Executive Advisory" 
+                         style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                </div>
+                <div class="about-text">
+                    <h3 lang="th" style="color: #0f2c59; margin-bottom: 15px;">3. Executive Advisory (ที่ปรึกษาบริหาร)</h3>
+                    <h3 lang="en" style="color: #0f2c59; margin-bottom: 15px;">3. Executive Advisory</h3>
+                    
+                    <p lang="th">บริการที่ปรึกษาส่วนตัวสำหรับเจ้าของกิจการ หรือ Admin Manager</p>
+                    <p lang="en">Exclusive advisory for business owners and admin managers.</p>
+                    
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li><strong>1-on-1 Session:</strong> <span lang="th">ปรึกษาปัญหาเฉพาะหน้าผ่าน Zoom/Video Call</span><span lang="en">Consult via Zoom/Video Call for immediate problem solving.</span></li>
+                        <li><strong>Team Training:</strong> <span lang="th">เทรนแอดมินให้ตอบแชทปิดการขายสไตล์คนลาว (Lao Soft Skills)</span><span lang="en">Admin training on Lao-style soft skills for closing sales.</span></li>
+                        <li><strong>Connection:</strong> <span lang="th">แนะนำพันธมิตรทางธุรกิจที่เชื่อถือได้ในเวียงจันทน์</span><span lang="en">Introduction to trusted business partners in Vientiane.</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
-
-           <div class="about-wrapper" style="flex-direction: row-reverse; margin-bottom: 60px;">
-    <div class="about-img-box">
-         <img src="images/section4.jpg" 
-              alt="ระบบขนส่งและโลจิสติกส์ข้ามแดน" 
-              style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-    </div>
-    <div class="about-text">
-        <h3 lang="th">2. Cross-Border Operations (ระบบหลังบ้าน)</h3>
-        <h3 lang="en">2. Cross-Border Operations</h3>
-
-        <p lang="th">วางระบบการขายข้ามแดนให้ลื่นไหล เหมือนขายในไทย</p>
-        <p lang="en">Seamless cross-border sales system setup, just like selling domestically.</p>
-
-        <ul style="margin-left: 20px; margin-top: 10px;">
-            <li><strong>Logistics Partner:</strong> <span lang="th">แนะนำบริษัทขนส่งที่เชี่ยวชาญ (Door-to-Door / รับหน้าด่าน)</span><span lang="en">Recommend expert logistics partners.</span></li>
-            <li><strong>Payment Gateway:</strong> <span lang="th">โซลูชั่นการรับชำระเงิน (BCEL One / Thai QR) ที่เงินเข้าบัญชีคุณทันที</span><span lang="en">Instant payment solutions (BCEL One / Thai QR).</span></li>
-            <li><strong>Stock Management:</strong> <span lang="th">แนะนำวิธีบริหารสต๊อกโดยไม่ต้องเสี่ยงฝากของไว้ที่ลาวเยอะเกินไป</span><span lang="en">Stock management advice to minimize risk.</span></li>
-        </ul>
-    </div>
-</div>
-          <div class="about-wrapper">
-    <div class="about-img-box">
-        <img src="images/section5.jpg" 
-             alt="Executive Advisory Private Consultation" 
-             style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-    </div>
-    
-    <div class="about-text">
-        <h3 lang="th">3. Executive Advisory (ที่ปรึกษาบริหาร)</h3>
-        <h3 lang="en">3. Executive Advisory</h3>
-        
-        <p lang="th">บริการที่ปรึกษาส่วนตัวสำหรับเจ้าของกิจการ หรือ Admin Manager</p>
-        <p lang="en">Exclusive advisory for business owners and admin managers.</p>
-        
-        <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
-            <li><strong>1-on-1 Session:</strong> <span lang="th">ปรึกษาปัญหาเฉพาะหน้าผ่าน Zoom/Video Call</span><span lang="en">Consult via Zoom/Video Call for immediate problem solving.</span></li>
-            <li><strong>Team Training:</strong> <span lang="th">เทรนแอดมินให้ตอบแชทปิดการขายสไตล์คนลาว (Lao Soft Skills)</span><span lang="en">Admin training on Lao-style soft skills for closing sales.</span></li>
-            <li><strong>Connection:</strong> <span lang="th">แนะนำพันธมิตรทางธุรกิจที่เชื่อถือได้ในเวียงจันทน์</span><span lang="en">Introduction to trusted business partners in Vientiane.</span></li>
-        </ul>
-    </div>
-</div>    </section>
+    </section>
 
     <section id="about" class="section-padding bg-light">
         <div class="container">
             <div class="about-wrapper">
                 <div class="about-img-box">
-                    <div class="about-img-box">
-                        <img src="images/Kwan3.jpg" alt="" class="img-cover" style="height: 500px;">
-                    </div>
+                    <img src="images/Kwan3.jpg" alt="Expert Profile" class="img-cover" style="height: 500px; object-fit: cover;">
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">
@@ -348,22 +361,28 @@
                         จากประสบการณ์จริงในการบริหารงานระดับสูง (Senior Management) ให้กับองค์กรชั้นนำข้ามชาติ ผมเชี่ยวชาญการวางระบบหน้าบ้านและหลังบ้าน 
                         เพื่อเปลี่ยน "สินค้ามูลค่าสูง" ให้กลายเป็นยอดขายจริง ท่ามกลางความท้าทายของเศรษฐกิจลาว
                     </p>
+                    <p lang="en">
+                        With real experience in Senior Management for leading multinational organizations, I specialize in front-end and back-end system setup to turn high-value products into actual sales amidst the challenges of the Lao economy.
+                    </p>
 
                     <ul style="margin-top: 20px; list-style: none;">
                         <li style="margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: #d4a373; margin-right: 10px;"></i>
                             <strong>Proven Growth:</strong> 
                             <span lang="th">เคยบริหารทีมขายและวางกลยุทธ์ จนสามารถสร้างยอดขายเติบโตแบบก้าวกระโดด (Triple-Digit Growth) ต่อเนื่องหลายปีซ้อน</span>
+                            <span lang="en">Managed sales teams and strategies achieving triple-digit growth for several consecutive years.</span>
                         </li>
                         <li style="margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: #d4a373; margin-right: 10px;"></i>
                             <strong>Network Builder:</strong> 
                             <span lang="th">ขยายเครือข่ายพันธมิตรทางธุรกิจ (Dealers & Agents) ครอบคลุมทั่วประเทศลาว มากกว่า 100 ราย</span>
+                            <span lang="en">Expanded a business network of over 100 dealers and agents across Laos.</span>
                         </li>
                         <li style="margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: #d4a373; margin-right: 10px;"></i>
                             <strong>Data-Driven:</strong> 
                             <span lang="th">ตัดสินใจด้วยข้อมูลเชิงลึก (Business Intelligence) วิเคราะห์ตลาดด้วยเครื่องมือระดับสากล ไม่ใช้สัญชาตญาณ</span>
+                            <span lang="en">Decisions based on Business Intelligence and international market analysis tools, not intuition.</span>
                         </li>
                     </ul>
                 </div>
@@ -371,71 +390,71 @@
         </div>
     </section>
 
-  <section id="process" class="section-padding">
-    <div class="container">
-        <h2 class="section-title text-center">
-            <span lang="th">ขั้นตอนการทำงาน (Step-by-Step)</span>
-            <span lang="en">Working Process</span>
-        </h2>
-        
-        <div class="services-grid">
-            <div class="process-step text-center">
-                <div class="number-badge">1</div>
-                <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-                    <img src="images/call.jpg" alt="Discovery Call" style="max-height: 100%; width: auto; border-radius: 8px;">
+    <section id="process" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">
+                <span lang="th">ขั้นตอนการทำงาน (Step-by-Step)</span>
+                <span lang="en">Working Process</span>
+            </h2>
+            <div class="services-grid">
+                <div class="process-step text-center">
+                    <div class="number-badge">1</div>
+                    <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/call.jpg" alt="Discovery Call" style="max-height: 100%; width: auto; border-radius: 8px;">
+                    </div>
+                    <h4 lang="th">1. Discovery Call (ฟรี)</h4>
+                    <h4 lang="en">1. Discovery Call (Free)</h4>
+                    <p lang="th" style="font-size: 0.9rem;">พูดคุยเบื้องต้น 15-20 นาที เพื่อประเมินสินค้าและความเป็นไปได้ในตลาดลาว (ถ้าสินค้าไม่ผ่าน ผมจะแจ้งตรงๆ)</p>
+                    <p lang="en" style="font-size: 0.9rem;">A 15-20 min initial talk to assess your product's potential in Laos. I'm honest about feasibility.</p>
                 </div>
-                <h4 lang="th">1. Discovery Call (ฟรี)</h4>
-                <h4 lang="en">1. Discovery Call (Free)</h4>
-                <p lang="th" style="font-size: 0.9rem;">พูดคุยเบื้องต้น 15-20 นาที เพื่อประเมินสินค้าและความเป็นไปได้ในตลาดลาว (ถ้าสินค้าไม่ผ่าน ผมจะแจ้งตรงๆ)</p>
-                <p lang="en" style="font-size: 0.9rem;">A 15-20 min initial talk to assess your product's potential in Laos. I'm honest about feasibility.</p>
-            </div>
 
-            <div class="process-step text-center">
-                <div class="number-badge">2</div>
-                <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-                    <img src="images/analysis.jpg" alt="Deep Dive Audit" style="max-height: 100%; width: auto; border-radius: 8px;">
+                <div class="process-step text-center">
+                    <div class="number-badge">2</div>
+                    <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/analysis.jpg" alt="Deep Dive Audit" style="max-height: 100%; width: auto; border-radius: 8px;">
+                    </div>
+                    <h4 lang="th">2. Deep Dive Audit</h4>
+                    <h4 lang="en">2. Deep Dive Audit</h4>
+                    <p lang="th" style="font-size: 0.9rem;">ชำระค่าบริการ เพื่อเริ่มวิเคราะห์เจาะลึก ตรวจสอบเพจ คู่แข่ง และวางโครงสร้างราคา (Pricing Structure)</p>
+                    <p lang="en" style="font-size: 0.9rem;">Begin in-depth analysis of your page, competitors, and pricing structure after service fee.</p>
                 </div>
-                <h4 lang="th">2. Deep Dive Audit</h4>
-                <h4 lang="en">2. Deep Dive Audit</h4>
-                <p lang="th" style="font-size: 0.9rem;">ชำระค่าบริการ เพื่อเริ่มวิเคราะห์เจาะลึก ตรวจสอบเพจ คู่แข่ง และวางโครงสร้างราคา (Pricing Structure)</p>
-                <p lang="en" style="font-size: 0.9rem;">Begin in-depth analysis of your page, competitors, and pricing structure after service fee.</p>
-            </div>
 
-            <div class="process-step text-center">
-                <div class="number-badge">3</div>
-                <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-                    <img src="images/blueprint.jpg" alt="Strategy Blueprint" style="max-height: 100%; width: auto; border-radius: 8px;">
+                <div class="process-step text-center">
+                    <div class="number-badge">3</div>
+                    <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/blueprint.jpg" alt="Strategy Blueprint" style="max-height: 100%; width: auto; border-radius: 8px;">
+                    </div>
+                    <h4 lang="th">3. Strategy Blueprint</h4>
+                    <h4 lang="en">3. Strategy Blueprint</h4>
+                    <p lang="th" style="font-size: 0.9rem;">ส่งมอบแผนกลยุทธ์ (Action Plan) พร้อมรายชื่อ Partner ขนส่ง/การเงิน ที่ต้องติดต่อ</p>
+                    <p lang="en" style="font-size: 0.9rem;">Delivery of your Action Plan along with a list of trusted logistics and financial partners.</p>
                 </div>
-                <h4 lang="th">3. Strategy Blueprint</h4>
-                <h4 lang="en">3. Strategy Blueprint</h4>
-                <p lang="th" style="font-size: 0.9rem;">ส่งมอบแผนกลยุทธ์ (Action Plan) พร้อมรายชื่อ Partner ขนส่ง/การเงิน ที่ต้องติดต่อ</p>
-                <p lang="en" style="font-size: 0.9rem;">Delivery of your Action Plan along with a list of trusted logistics and financial partners.</p>
-            </div>
 
-            <div class="process-step text-center">
-                <div class="number-badge">4</div>
-                <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-                    <img src="images/rocket.jpg" alt="Execution" style="max-height: 100%; width: auto; border-radius: 8px;">
+                <div class="process-step text-center">
+                    <div class="number-badge">4</div>
+                    <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/rocket.jpg" alt="Execution" style="max-height: 100%; width: auto; border-radius: 8px;">
+                    </div>
+                    <h4 lang="th">4. Execution & Monitoring</h4>
+                    <h4 lang="en">4. Execution & Monitoring</h4>
+                    <p lang="th" style="font-size: 0.9rem;">เริ่มยิงแอด/ขายจริง ผมจะคอย Monitor ผลลัพธ์และแนะนำการปรับแก้ในช่วงแรก</p>
+                    <p lang="en" style="font-size: 0.9rem;">Go live with ads and sales. I'll monitor results and provide optimization advice during launch.</p>
                 </div>
-                <h4 lang="th">4. Execution & Monitoring</h4>
-                <h4 lang="en">4. Execution & Monitoring</h4>
-                <p lang="th" style="font-size: 0.9rem;">เริ่มยิงแอด/ขายจริง ผมจะคอย Monitor ผลลัพธ์และแนะนำการปรับแก้ในช่วงแรก</p>
-                <p lang="en" style="font-size: 0.9rem;">Go live with ads and sales. I'll monitor results and provide optimization advice during launch.</p>
-            </div>
 
-            <div class="process-step text-center">
-                <div class="number-badge">5</div>
-                <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-                    <img src="images/optimize.jpg" alt="Optimization" style="max-height: 100%; width: auto; border-radius: 8px;">
+                <div class="process-step text-center">
+                    <div class="number-badge">5</div>
+                    <div style="height: 100px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
+                        <img src="images/optimize.jpg" alt="Optimization" style="max-height: 100%; width: auto; border-radius: 8px;">
+                    </div>
+                    <h4 lang="th">5. Optimization (PDCA)</h4>
+                    <h4 lang="en">5. Optimization (PDCA)</h4>
+                    <p lang="th" style="font-size: 0.9rem;">วิเคราะห์ข้อมูลหลังการขาย ปรับปรุงกระบวนการ เพื่อขยายผล (Scale Up) ในเดือนถัดไป</p>
+                    <p lang="en" style="font-size: 0.9rem;">Post-sales data analysis to refine processes and scale up your business for the next month.</p>
                 </div>
-                <h4 lang="th">5. Optimization (PDCA)</h4>
-                <h4 lang="en">5. Optimization (PDCA)</h4>
-                <p lang="th" style="font-size: 0.9rem;">วิเคราะห์ข้อมูลหลังการขาย ปรับปรุงกระบวนการ เพื่อขยายผล (Scale Up) ในเดือนถัดไป</p>
-                <p lang="en" style="font-size: 0.9rem;">Post-sales data analysis to refine processes and scale up your business for the next month.</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <section id="readiness" class="section-padding">
         <div class="container">
             <div class="checklist-container">
@@ -448,27 +467,35 @@
                         <p lang="th" style="margin-bottom: 30px; color: #dac0a3;">
                             เพื่อประสิทธิภาพสูงสุด บริการนี้เหมาะกับผู้ที่มีความพร้อมดังนี้:
                         </p>
+                        <p lang="en" style="margin-bottom: 30px; color: #dac0a3;">
+                            For maximum efficiency, this service is for those with the following readiness:
+                        </p>
                         
                         <div class="checklist-item">
                             <div class="check-box"><i class="fas fa-check"></i></div>
-                            <span>มีสินค้า/บริการที่ทำตลาดในไทยอยู่แล้ว (ไม่ใช่ Idea stage)</span>
+                            <span lang="th">มีสินค้า/บริการที่ทำตลาดในไทยอยู่แล้ว (ไม่ใช่ Idea stage)</span>
+                            <span lang="en">Have existing products/services in the Thai market (Not idea stage).</span>
                         </div>
                         <div class="checklist-item">
                             <div class="check-box"><i class="fas fa-check"></i></div>
-                            <span>สินค้ามีมูลค่าต่อชิ้น > 500 บาท หรือมีกำไรต่อออเดอร์เพียงพอ</span>
+                            <span lang="th">สินค้ามีมูลค่าต่อชิ้น > 500 บาท หรือมีกำไรต่อออเดอร์เพียงพอ</span>
+                            <span lang="en">Products valued > 500 THB/unit or sufficient profit per order.</span>
                         </div>
                         <div class="checklist-item">
                             <div class="check-box"><i class="fas fa-check"></i></div>
-                            <span>มีแอดมินพร้อมตอบแชท หรือเจ้าของตอบเองได้ไว</span>
+                            <span lang="th">มีแอดมินพร้อมตอบแชท หรือเจ้าของตอบเองได้ไว</span>
+                            <span lang="en">Ready admin support or owner can respond quickly.</span>
                         </div>
                         <div class="checklist-item">
                             <div class="check-box"><i class="fas fa-check"></i></div>
-                            <span>พร้อมปรับตัวและเรียนรู้วัฒนธรรมการค้าใหม่ๆ</span>
+                            <span lang="th">พร้อมปรับตัวและเรียนรู้วัฒนธรรมการค้าใหม่ๆ</span>
+                            <span lang="en">Ready to adapt and learn new trade cultures.</span>
                         </div>
                     </div>
                     
                     <div style="flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column;">
                         <h3 lang="th" style="text-align: center; color: white;">ถ้าติ๊กถูกครบทุกข้อ...<br>คุณคือคนที่ผมมองหา!</h3>
+                        <h3 lang="en" style="text-align: center; color: white;">If you check all the boxes...<br>You are the one I'm looking for!</h3>
                         <a href="#contact" class="btn-primary" style="background: white; color: #0f2c59; margin-top: 20px;">
                             <span lang="th">จองคิวปรึกษาเลย</span><span lang="en">Book Consultation</span>
                         </a>
@@ -478,118 +505,117 @@
         </div>
     </section>
 
-   <section id="contact" class="section-padding bg-light">
-    <div class="container">
-        <div class="contact-wrapper" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: flex-start;">
-            
-            <div class="contact-info" style="flex: 1; min-width: 300px;">
-                <h2 class="section-title">
-                    <span lang="th">พร้อมบุกตลาดลาวหรือยัง?</span>
-                    <span lang="en">Ready to Expand?</span>
-                </h2>
-                <p lang="th" style="font-size: 1.1rem; color: #555;">อย่ารอให้คู่แข่งยึดพื้นที่ตลาด Niche ไปหมด ปรึกษาผมก่อนเจ็บตัวฟรี</p>
-                <p lang="en" style="font-size: 1.1rem; color: #555;">Don't let competitors take the Niche market spot. Consult me before losing money.</p>
+    <section id="contact" class="section-padding bg-light">
+        <div class="container">
+            <div class="contact-wrapper" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: flex-start;">
+                <div class="contact-info" style="flex: 1; min-width: 300px;">
+                    <h2 class="section-title">
+                        <span lang="th">พร้อมบุกตลาดลาวหรือยัง?</span>
+                        <span lang="en">Ready to Expand?</span>
+                    </h2>
+                    <p lang="th" style="font-size: 1.1rem; color: #555;">อย่ารอให้คู่แข่งยึดพื้นที่ตลาด Niche ไปหมด ปรึกษาผมก่อนเจ็บตัวฟรี</p>
+                    <p lang="en" style="font-size: 1.1rem; color: #555;">Don't let competitors take the Niche market spot. Consult me before losing money.</p>
+                    
+                    <div class="contact-methods" style="margin-top: 30px;">
+                        <div style="margin-bottom: 25px;">
+                            <img src="images/qr-code.jpg" alt="Line QR" style="height: 180px; width: 180px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        </div>
+                        <div style="font-size: 1.1rem; line-height: 2;">
+                            <p><i class="fab fa-facebook" style="color: #1877F2; width: 25px;"></i> Thai Lao E-Biz Advisor</p>
+                            <p style="margin-bottom: 0;">
+                                <i class="fab fa-line" style="color: #00C300; width: 25px;"></i> kwan.pawach
+                            </p>
+                            <p style="margin-top: -8px; margin-left: 30px;">
+                                <a href="https://line.me/ti/p/MNMKXScWsr" target="_blank" style="color: #00C300; text-decoration: underline; font-weight: bold; font-size: 0.95rem;">
+                                    <span lang="th">คลิกที่นี่เพื่อเพิ่ม LINE</span>
+                                    <span lang="en">Click here to add LINE</span>
+                                </a>
+                            </p>
+                            <p>
+                                <a href="mailto:kwanpawach@gmail.com" style="text-decoration: none; color: inherit;">
+                                    <i class="fas fa-envelope" style="color: #c0392b; width: 25px;"></i> kwanpawach@gmail.com
+                                </a>
+                            </p>
+                        </div>
+                    </div>             
+                </div>
                 
-               <div class="contact-methods" style="margin-top: 30px;">
-    <div style="margin-bottom: 25px;">
-        <img src="images/qr-code.jpg" alt="Line QR" style="height: 180px; width: 180px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-    </div>
-    
-    <div style="font-size: 1.1rem; line-height: 2;">
-        <p><i class="fab fa-facebook" style="color: #1877F2; width: 25px;"></i> Thai Lao E-Biz Advisor</p>
-        
-        <p style="margin-bottom: 0;">
-            <i class="fab fa-line" style="color: #00C300; width: 25px;"></i> kwan.pawach
-        </p>
-        
-        <p style="margin-top: -8px; margin-left: 30px;">
-            <a href="https://line.me/ti/p/MNMKXScWsr" target="_blank" style="color: #00C300; text-decoration: underline; font-weight: bold; font-size: 0.95rem;">
-                <span lang="th">คลิกที่นี่เพื่อเพิ่ม LINE</span>
-                <span lang="en">Click here to add LINE</span>
-            </a>
-        </p>
-
-        <p>
-            <a href="mailto:kwanpawach@gmail.com" style="text-decoration: none; color: inherit;">
-                <i class="fas fa-envelope" style="color: #c0392b; width: 25px;"></i> kwanpawach@gmail.com
-            </a>
-        </p>
-    </div>
-</div>             
+                <div style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    <form id="google-sheet-form" class="contact-form">
+                        <h3 lang="th" style="margin-bottom: 20px; color: #0f2c59;">ฝากข้อความ (Fast Track)</h3>
+                        <h3 lang="en" style="margin-bottom: 20px; color: #0f2c59;">Request a Callback</h3>
+                        <div style="margin-bottom: 15px;">
+                            <input type="text" name="name" placeholder="ชื่อของคุณ / Name" required 
+                                   style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <input type="tel" name="contact_info" placeholder="เบอร์โทร หรือ อีเมล / Phone or Email" required 
+                                   style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <input type="text" name="product" placeholder="สินค้าของคุณคืออะไร? / Your Product" required 
+                                   style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <textarea name="message" rows="4" placeholder="ปัญหาหลักที่ต้องการปรึกษา / Key Problem" required 
+                                      style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; border-radius: 8px; border: none; padding: 15px; cursor: pointer; font-weight: bold;">
+                            <span lang="th">ส่งข้อมูลปรึกษาฟรี</span><span lang="en">Send Message</span>
+                        </button>
+                        <div id="form-success" style="display: none; margin-top: 15px; padding: 15px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
+                            <span lang="th">ได้รับข้อมูลแล้ว! ผมจะติดต่อกลับโดยเร็วที่สุด</span>
+                            <span lang="en">Success! I will contact you back soon.</span>
+                        </div>
+                    </form>
+                </div>
             </div>
-            
-            <div style="flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <form id="google-sheet-form" class="contact-form">
-                    <h3 lang="th" style="margin-bottom: 20px; color: #0f2c59;">ฝากข้อความ (Fast Track)</h3>
-                    <h3 lang="en" style="margin-bottom: 20px; color: #0f2c59;">Request a Callback</h3>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <input type="text" name="name" placeholder="ชื่อของคุณ / Name" required 
-                               style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <input type="tel" name="contact_info" placeholder="เบอร์โทร หรือ อีเมล / Phone or Email" required 
-                               style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
-                    </div>
-                    
-                    <div style="margin-bottom: 15px;">
-                        <input type="text" name="product" placeholder="สินค้าของคุณคืออะไร? / Your Product" required 
-                               style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <textarea name="message" rows="4" placeholder="ปัญหาหลักที่ต้องการปรึกษา / Key Problem" required 
-                                  style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;"></textarea>
-                    </div>
-
-                    <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; border-radius: 8px; border: none; padding: 15px; cursor: pointer; font-weight: bold;">
-                        <span lang="th">ส่งข้อมูลปรึกษาฟรี</span><span lang="en">Send Message</span>
-                    </button>
-
-                    <div id="form-success" style="display: none; margin-top: 15px; padding: 15px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
-                        <span lang="th">ได้รับข้อมูลแล้ว! ผมจะติดต่อกลับโดยเร็วที่สุด</span>
-                        <span lang="en">Success! I will contact you back soon.</span>
-                    </div>
-                </form>
-            </div>
-            
         </div>
-    </div>
-</section>
+    </section>
 
-<footer style="padding: 40px 0; background: #0a1f3d; color: white; text-align: center;">
-    <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
-</footer>
-
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec'; // วาง URL จาก Google Apps Script ของคุณ
-    const form = document.getElementById('google-sheet-form');
-    const btn = document.getElementById('submit-btn');
-    const successMsg = document.getElementById('form-success');
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        btn.disabled = true;
-        btn.innerText = 'Sending...';
-
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                btn.style.display = 'none';
-                successMsg.style.display = 'block';
-                form.reset();
-            })
-            .catch(error => {
-                btn.disabled = false;
-                btn.innerText = 'Try Again';
-                alert('Error! โปรดลองใหม่อีกครั้ง');
-            });
-    });
-</script>
-    <footer>
+    <footer style="padding: 40px 0; background: #0a1f3d; color: white; text-align: center;">
         <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec';
+        const form = document.getElementById('google-sheet-form');
+        const btn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('form-success');
+        const langToggle = document.getElementById('lang-toggle');
+        const body = document.body;
+
+        // Language toggle logic
+        langToggle.addEventListener('click', () => {
+            if (body.classList.contains('lang-th')) {
+                body.classList.remove('lang-th');
+                body.classList.add('lang-en');
+                langToggle.innerText = 'TH';
+            } else {
+                body.classList.remove('lang-en');
+                body.classList.add('lang-th');
+                langToggle.innerText = 'EN';
+            }
+        });
+
+        // Form submission logic
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btn.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    form.reset();
+                })
+                .catch(error => {
+                    btn.disabled = false;
+                    btn.innerText = 'Try Again';
+                    alert('Error! โปรดลองใหม่อีกครั้ง');
+                });
+        });
+    </script>
 </body>
 </html>
