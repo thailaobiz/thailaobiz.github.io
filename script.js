@@ -23,30 +23,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 2. ระบบเมนูมือถือ (Fixed ID) ---
-   const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+   // --- 2. ระบบเมนูมือถือ (CLEAN & SAFE VERSION) ---
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            // เปลี่ยนไอคอน Hamburger <-> กากบาท
-            const icon = menuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
+if (menuToggle && navLinks) {
 
-        // คลิกที่ลิงก์แล้วให้เมนูปิดตัวลงเอง
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            });
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // คลิกที่ลิงก์แล้วให้เมนูปิดตัวลงเอง
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
         });
-    }
+    });
+
+}
+
 
     // --- 3. Google Sheets Form (เดิม) ---
     const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec'; // ใส่ URL เดิมของคุณ
