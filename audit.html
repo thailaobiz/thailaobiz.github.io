@@ -663,5 +663,67 @@
         });
     </script>
 
+<script>
+    // 1. URL นี้ต้องเป็นอันเดียวกับหน้า Index ที่ใช้งานได้
+    // ถ้าหน้า Index ใช้ URL อื่น ให้ Copy URL นั้นมาแทนที่ตรงนี้ครับ
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec';
+    
+    const form = document.getElementById('google-sheet-form');
+    const btn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('form-success');
+
+    // ตรวจสอบว่ามีฟอร์มจริงไหม ป้องกัน Error
+    if (form) {
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // ป้องกันหน้าเว็บ Refresh
+            
+            // เปลี่ยนปุ่มเป็นสถานะกำลังส่ง
+            btn.disabled = true;
+            btn.innerHTML = '<span lang="th">กำลังส่งข้อมูล...</span><span lang="en">Sending...</span>';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    // กรณีส่งสำเร็จ
+                    console.log('Success!', response);
+                    btn.style.display = 'none'; // ซ่อนปุ่ม
+                    successMsg.style.display = 'block'; // โชว์ข้อความขอบคุณ
+                    form.reset(); // ล้างข้อมูลในฟอร์ม
+                })
+                .catch(error => {
+                    // กรณีส่งไม่สำเร็จ
+                    console.error('Error!', error.message);
+                    btn.disabled = false;
+                    btn.innerHTML = '<span lang="th">เกิดข้อผิดพลาด ลองใหม่</span><span lang="en">Error! Try Again</span>';
+                    alert('ส่งข้อมูลไม่สำเร็จ! กรุณาตรวจสอบอินเทอร์เน็ต หรือติดต่อทาง Line');
+                });
+        });
+    }
+
+    // ส่วนจัดการเปลี่ยนภาษา (Language Toggle)
+    const langToggle = document.getElementById('lang-toggle');
+    const body = document.body;
+
+    // โหลดค่าภาษาเดิมที่เคยเลือกไว้
+    const currentLang = localStorage.getItem('language');
+    if (currentLang === 'en') {
+        body.classList.add('lang-en');
+        if(langToggle) langToggle.textContent = 'TH';
+    }
+
+    if (langToggle) {
+        langToggle.addEventListener('click', () => {
+            body.classList.toggle('lang-en');
+            if (body.classList.contains('lang-en')) {
+                localStorage.setItem('language', 'en');
+                langToggle.textContent = 'TH';
+            } else {
+                localStorage.setItem('language', 'th');
+                langToggle.textContent = 'EN';
+            }
+        });
+    }
+</script>
+
+    
 </body>
 </html>
