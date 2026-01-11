@@ -243,6 +243,54 @@
             .hero-text h1 { font-size: 2rem; }
             .pricing-content { padding: 30px; }
         }
+/* --- Mobile Fix for Pricing Section --- */
+    @media (max-width: 992px) {
+        .pricing-container {
+            display: flex;
+            flex-direction: column; /* บังคับเรียงแนวตั้ง */
+            height: auto; /* ปล่อยความสูงอิสระ */
+        }
+
+        .pricing-image {
+            width: 100%;
+            height: 250px; /* กำหนดความสูงรูปภาพให้เหมาะสม */
+            order: -1; /* เอารูปขึ้นก่อนข้อความ */
+        }
+
+        .pricing-image img {
+            border-radius: 20px 20px 0 0; /* โค้งมนแค่ด้านบน */
+            height: 100%;
+            width: 100%;
+            object-fit: cover; /* ตัดส่วนเกินออกไม่ให้ภาพเบี้ยว */
+            max-height: none; /* ยกเลิกค่าเดิม */
+            min-height: auto;
+        }
+
+        .pricing-content {
+            padding: 30px 20px; /* ลดช่องว่างด้านใน */
+            text-align: center; /* จัดกึ่งกลางเพื่อให้ดูสวยบนมือถือ */
+        }
+
+        .pricing-content h2 {
+            font-size: 1.8rem; /* ลดขนาดหัวข้อลงนิดหน่อย */
+        }
+
+        .price-tag {
+            font-size: 2.5rem; /* ลดขนาดตัวเลขราคา */
+        }
+
+        .deliverable-list {
+            text-align: left; /* รายการยังคงชิดซ้ายเพื่อให้อ่านง่าย */
+            display: inline-block; /* ให้ก้อนรายการอยู่กึ่งกลาง */
+            margin-top: 20px;
+        }
+
+        .pricing-note {
+            justify-content: center; /* จัดไอคอนเช็คให้กึ่งกลาง */
+            flex-wrap: wrap; /* ถ้ายาวไปให้ปัดบรรทัดใหม่ */
+        }
+    }
+        
     </style>
 </head>
 <body class="lang-th">
