@@ -611,56 +611,59 @@
             <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
             <p><a href="http://www.thailaobiz.com" style="color: #d4a373;">www.thailaobiz.com</a></p>
         </div>
-        </footer>
+    </footer>
       
-    // Form Logic
+    <script>
+        // Form Logic (Moved inside script tag)
         const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec';
         const form = document.getElementById('google-sheet-form');
         const btn = document.getElementById('submit-btn');
         const successMsg = document.getElementById('form-success');
 
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btn.disabled = true;
-            btn.innerText = 'Sending...';
+        if (form) {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                btn.disabled = true;
+                btn.innerText = 'Sending...';
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    btn.style.display = 'none';
-                    successMsg.style.display = 'block';
-                    form.reset();
-                })
-                .catch(error => {
-                    btn.disabled = false;
-                    btn.innerText = 'Try Again';
-                    alert('Error! โปรดลองใหม่อีกครั้ง');
-                });
-        });
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        btn.style.display = 'none';
+                        successMsg.style.display = 'block';
+                        form.reset();
+                    })
+                    .catch(error => {
+                        btn.disabled = false;
+                        btn.innerText = 'Try Again';
+                        alert('Error! โปรดลองใหม่อีกครั้ง');
+                    });
+            });
+        }
  
-    <script>
-    const langToggle = document.getElementById('lang-toggle');
-    const body = document.body;
+        // Language Toggle Logic
+        const langToggle = document.getElementById('lang-toggle');
+        const body = document.body;
 
-    // โหลดค่าภาษาเดิมที่เคยเลือกไว้
-    const currentLang = localStorage.getItem('language');
-    if (currentLang === 'en') {
-        body.classList.add('lang-en');
-        if(langToggle) langToggle.textContent = 'TH';
-    }
+        // โหลดค่าภาษาเดิมที่เคยเลือกไว้
+        const currentLang = localStorage.getItem('language');
+        if (currentLang === 'en') {
+            body.classList.add('lang-en');
+            if(langToggle) langToggle.textContent = 'TH';
+        }
 
-    if (langToggle) {
-        langToggle.addEventListener('click', () => {
-            body.classList.toggle('lang-en');
-            if (body.classList.contains('lang-en')) {
-                localStorage.setItem('language', 'en');
-                langToggle.textContent = 'TH';
-            } else {
-                localStorage.setItem('language', 'th');
-                langToggle.textContent = 'EN';
-            }
-        });
-    }
-</script>
+        if (langToggle) {
+            langToggle.addEventListener('click', () => {
+                body.classList.toggle('lang-en');
+                if (body.classList.contains('lang-en')) {
+                    localStorage.setItem('language', 'en');
+                    langToggle.textContent = 'TH';
+                } else {
+                    localStorage.setItem('language', 'th');
+                    langToggle.textContent = 'EN';
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
