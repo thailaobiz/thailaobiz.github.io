@@ -19,7 +19,7 @@
             --text-dark: #333333;      /* Main Text Color */
             --white: #ffffff;
             --success: #28a745;
-            --danger: #dc3545; /* Used sparingly now */
+            --danger: #dc3545;
             --soft-gray: #6c757d;
         }
 
@@ -80,7 +80,6 @@
         }
         .lang-btn:hover { background: var(--primary-blue); color: var(--white); }
 
-
         /* --- HERO SECTION --- */
         .hero-audit {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #1a3c70 100%);
@@ -101,7 +100,6 @@
         .hero-image img {
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            /* Removed rotation for a softer look */
             transition: transform 0.5s ease;
         }
 
@@ -115,7 +113,6 @@
             position: relative;
         }
         .value-card h3 { text-align: center; margin-bottom: 30px; font-size: 1.4rem; }
-        /* Softer borders */
         .value-card.focus { border-top: 4px solid var(--primary-blue); }
         .value-card.benefit { border-top: 4px solid var(--success); }
         
@@ -196,7 +193,24 @@
         }
         .step-card h4 { margin-bottom: 10px; }
 
-        /* --- FINAL CTA --- */
+        /* --- CONTACT FORM (ADDED) --- */
+        .contact-form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
         .final-cta { background: var(--primary-blue); color: var(--white); text-align: center; padding: 80px 0; }
         .final-cta h2 { color: var(--white); font-size: 2.2rem; margin-bottom: 20px; }
         .final-cta p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px; }
@@ -216,7 +230,6 @@
         body.lang-en h3[lang="en"], 
         body.lang-en h4[lang="en"], 
         body.lang-en ul[lang="en"] { display: block; }
-
 
         /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
@@ -280,7 +293,6 @@
             <div class="text-center" style="max-width: 700px; margin: 0 auto 50px;">
                 <h2 lang="th">บริการนี้ช่วยคุณได้อย่างไร?</h2>
                 <h2 lang="en">How Can This Service Help You?</h2>
-
                 <p lang="th">ผมวิเคราะห์โดยอิงจากประสบการณ์และการทำงานจริงในตลาดลาว เพื่อให้คุณได้รับคำแนะนำที่นำไปปรับใช้ได้จริง</p>
                 <p lang="en">I analyze based on real experience in the Lao market to provide actionable advice you can implement immediately.</p>
             </div>
@@ -309,7 +321,6 @@
                         </li>
                     </ul>
                 </div>
-                
                 <div class="value-card benefit">
                     <h3 style="color: var(--success);">
                         <span lang="th">สิ่งที่คุณจะได้รับ</span>
@@ -342,7 +353,6 @@
             <div class="text-center" style="margin-bottom: 50px;">
                 <h2 lang="th">6 หัวข้อหลักในการตรวจสอบ</h2>
                 <h2 lang="en">6 Key Audit Points</h2>
-                
                 <p class="highlight-gold" style="font-weight: 500;">
                     <span lang="th">ครอบคลุมปัจจัยสำคัญที่มีผลต่อความสำเร็จ</span>
                     <span lang="en">Covering crucial factors for success</span>
@@ -458,12 +468,8 @@
                             <span lang="en">No contract binding</span>
                         </div>
                     </div>
-
-                    <a href="https://your-google-form-link.com" target="_blank" class="btn btn-gold" style="width: 100%; margin-top: 30px; text-align: center;">
-                        <span lang="th">สนใจจองคิว Audit <i class="fas fa-chevron-right"></i></span>
-                        <span lang="en">Book Your Audit Now <i class="fas fa-chevron-right"></i></span>
-                    </a>
-                </div>
+                    
+                    </div>
             </div>
         </div>
     </section>
@@ -559,15 +565,40 @@
         <div class="container">
             <h2 lang="th">เริ่มต้นอย่างมั่นใจในตลาดลาว</h2>
             <h2 lang="en">Start Confidently in the Lao Market</h2>
-
+            
             <p lang="th">ให้เราเป็นส่วนหนึ่งในการเตรียมความพร้อมเพื่อความสำเร็จของธุรกิจคุณ</p>
             <p lang="en">Let us be part of your preparation for business success.</p>
 
-            <a href="https://your-google-form-link.com" target="_blank" class="btn btn-gold" style="font-size: 1.2rem; padding: 18px 50px;">
-                <span lang="th">ลงทะเบียนเพื่อขอรับคำปรึกษา</span>
-                <span lang="en">Register for Consultation</span>
-            </a>
-            
+            <div class="contact-form-container" style="margin-top: 30px;">
+                <form id="google-sheet-form" class="contact-form">
+                    <h3 lang="th" style="color: #0f2c59; margin-bottom: 20px;">ฝากข้อความ (Fast Track)</h3>
+                    <h3 lang="en" style="color: #0f2c59; margin-bottom: 20px;">Request a Callback</h3>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="name" placeholder="ชื่อของคุณ / Name" required>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="tel" name="contact_info" placeholder="เบอร์โทร หรือ อีเมล / Phone or Email" required>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <input type="text" name="product" placeholder="สินค้าของคุณคืออะไร? / Your Product" required>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <textarea name="message" rows="4" placeholder="ปัญหาหลักที่ต้องการปรึกษา / Key Problem" required></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="btn btn-gold" style="width: 100%; border: none; cursor: pointer;">
+                        <span lang="th">ส่งข้อมูลปรึกษาฟรี</span>
+                        <span lang="en">Send Message</span>
+                    </button>
+                    
+                    <div id="form-success" style="display: none; margin-top: 15px; padding: 15px; background: #d4edda; color: #155724; border-radius: 8px; text-align: center;">
+                        <span lang="th">ได้รับข้อมูลแล้ว! ผมจะติดต่อกลับโดยเร็วที่สุด</span>
+                        <span lang="en">Success! I will contact you back soon.</span>
+                    </div>
+                </form>
+            </div>
+
             <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">
                 <span lang="th">โดย <strong>Thai Lao E-Biz Advisor</strong><br>เพื่อนคู่คิดธุรกิจไทย-ลาว ด้วยประสบการณ์กว่า 10 ปี</span>
                 <span lang="en">By <strong>Thai Lao E-Biz Advisor</strong><br>Your Thai-Lao Business Partner with 10+ Years Experience</span>
@@ -583,10 +614,10 @@
     </footer>
 
     <script>
+        // Language Toggle Logic
         const langToggle = document.getElementById('lang-toggle');
         const body = document.body;
 
-        // Load saved language
         const currentLang = localStorage.getItem('language');
         if (currentLang === 'en') {
             body.classList.add('lang-en');
@@ -605,6 +636,30 @@
                 localStorage.setItem('language', 'th');
                 langToggle.textContent = 'EN';
             }
+        });
+
+        // Form Logic
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby9zQRSAmoPRrHeZCSCcvebjUmzHTcrRUnKYfT_t363f3b3D1Hx73Fml4la5DF_Uos/exec';
+        const form = document.getElementById('google-sheet-form');
+        const btn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('form-success');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    btn.style.display = 'none';
+                    successMsg.style.display = 'block';
+                    form.reset();
+                })
+                .catch(error => {
+                    btn.disabled = false;
+                    btn.innerText = 'Try Again';
+                    alert('Error! โปรดลองใหม่อีกครั้ง');
+                });
         });
     </script>
 
