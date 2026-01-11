@@ -113,6 +113,36 @@
             object-fit: cover;
             border-radius: 8px;
         }
+        /* เพิ่มต่อท้ายใน <style> เดิม */
+
+/* ป้าย New ติดเมนู */
+.badge-new {
+    background: #dc3545;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    vertical-align: middle;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+/* ลิงก์แบบข้อความมีลูกศร */
+.link-arrow {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--accent); /* สีทองตามธีม */
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.link-arrow:hover {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+}
+       
     </style>
 </head>
 <body class="lang-th">
@@ -128,16 +158,32 @@
             <div class="menu-toggle" id="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
+                <ul class="nav-links">
+    
+                    <li>
+                            <a href="index.html">
+                            <span lang="th">หน้าแรก</span>
+                            <span lang="en">Home</span>
+                                                        </a>
+                                                    </li>
 
-           <ul class="nav-links">
     <li><a href="#stats"><span lang="th">ข้อมูลตลาด</span><span lang="en">Market Data</span></a></li>
     <li><a href="#benefits"><span lang="th">สิ่งที่คุณจะได้</span><span lang="en">Benefits</span></a></li>
     <li><a href="#services"><span lang="th">บริการ</span><span lang="en">Services</span></a></li>
+
+    <li>
+        <a href="audit.html" target="_blank">
+            <span lang="th">ตรวจเพจ <span class="badge-new">NEW</span></span>
+            <span lang="en">Page Audit <span class="badge-new">NEW</span></span>
+        </a>
+    </li>
+
     <li><a href="#about"><span lang="th">ผู้เชี่ยวชาญ</span><span lang="en">Expert</span></a></li>
     <li><a href="#faq"><span lang="th">คำถามที่พบบ่อย</span><span lang="en">FAQ</span></a></li>
     <li><a href="#contact"><span lang="th">ติดต่อ</span><span lang="en">Contact</span></a></li>
     <li><button id="lang-toggle" class="lang-btn">EN</button></li>
 </ul>
+          
         </nav>
     </header>
 
@@ -314,6 +360,26 @@
                         <li><strong>Visual Identity:</strong> <span lang="th">ปรับภาพลักษณ์ให้ดู "Premium" ในสายตาคนลาว</span><span lang="en">Enhance visual identity to look "Premium" for Lao audience.</span></li>
                         <li><strong>Competitor Analysis:</strong> <span lang="th">วิเคราะห์คู่แข่งในตลาดเดียวกัน เพื่อหาช่องว่างในการทำกำไร</span><span lang="en">Analyze competitors to find profitable market gaps.</span></li>
                     </ul>
+
+                    <div class="about-text">
+    <h3 lang="th" style="color: #0f2c59; margin-bottom: 15px;">1. Strategic Page Audit (ผ่าตัดเพจ)</h3>
+    <h3 lang="en" style="color: #0f2c59; margin-bottom: 15px;">1. Strategic Page Audit</h3>
+    
+    <p lang="th">บริการตรวจสุขภาพเพจ Facebook อย่างละเอียด เพื่อเตรียมความพร้อมก่อนยิงแอด</p>
+    <p lang="en">Comprehensive Facebook Page audit to ensure readiness before running ads.</p>
+
+    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+        <li><strong>Content Localization:</strong> <span lang="th">ตรวจสอบภาษาลาว คำแสลง และบริบททางวัฒนธรรม</span><span lang="en">Check Lao language, slang, and cultural context.</span></li>
+        <li><strong>Visual Identity:</strong> <span lang="th">ปรับภาพลักษณ์ให้ดู "Premium" ในสายตาคนลาว</span><span lang="en">Enhance visual identity to look "Premium" for Lao audience.</span></li>
+        <li><strong>Competitor Analysis:</strong> <span lang="th">วิเคราะห์คู่แข่งในตลาดเดียวกัน เพื่อหาช่องว่างในการทำกำไร</span><span lang="en">Analyze competitors to find profitable market gaps.</span></li>
+    </ul>
+
+    <a href="audit.html" class="link-arrow" target="_blank">
+        <span lang="th">ดูรายละเอียดแพ็กเกจตรวจเพจ <i class="fas fa-arrow-right"></i></span>
+        <span lang="en">View Audit Package Details <i class="fas fa-arrow-right"></i></span>
+    </a>
+</div>
+                    
                 </div>
             </div>
 
