@@ -67,6 +67,19 @@
         .logo img { height: 50px; }
         .back-link { color: var(--primary-blue); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 5px; }
         .back-link:hover { color: var(--secondary-gold); }
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .lang-btn {
+            background: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .lang-btn:hover { background: var(--primary-blue); color: var(--white); }
+
 
         /* --- HERO SECTION --- */
         .hero-audit {
@@ -192,6 +205,19 @@
         footer { background: #0a1f3d; color: rgba(255,255,255,0.6); text-align: center; padding: 30px 0; font-size: 0.9rem; }
         footer a { color: var(--secondary-gold); text-decoration: none; }
 
+        /* --- LANGUAGE SWITCHER LOGIC --- */
+        [lang="en"] { display: none; }
+        body.lang-en [lang="th"] { display: none; }
+        body.lang-en [lang="en"] { display: inline; }
+        body.lang-en div[lang="en"], 
+        body.lang-en p[lang="en"], 
+        body.lang-en h1[lang="en"], 
+        body.lang-en h2[lang="en"], 
+        body.lang-en h3[lang="en"], 
+        body.lang-en h4[lang="en"], 
+        body.lang-en ul[lang="en"] { display: block; }
+
+
         /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
             .hero-grid, .value-prop-grid, .pricing-container, .target-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -205,16 +231,21 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-th">
 
     <header>
         <div class="container nav-container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Thai Lao E-Biz Advisor Logo">
             </a>
-            <a href="index.html" class="back-link">
-                <i class="fas fa-chevron-left"></i> กลับหน้าหลัก
-            </a>
+            <div class="nav-right">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-chevron-left"></i> 
+                    <span lang="th">กลับหน้าหลัก</span>
+                    <span lang="en">Back to Home</span>
+                </a>
+                <button id="lang-toggle" class="lang-btn">EN</button>
+            </div>
         </div>
     </header>
 
@@ -222,10 +253,20 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <div class="subheadline">บริการใหม่: Facebook Page Audit</div>
-                    <h1>เตรียมเพจให้พร้อม<br>ก่อนเริ่มทำตลาดในลาว</h1>
-                    <p>เพื่อความมั่นใจในการขยายธุรกิจ การตรวจสอบความพร้อมของเพจ จะช่วยให้คุณวางแผนการตลาดได้อย่างแม่นยำ และใช้งบประมาณอย่างคุ้มค่าที่สุด</p>
-                    <a href="#pricing" class="btn btn-gold">ตรวจสอบรายละเอียดบริการ <i class="fas fa-arrow-down" style="margin-left: 10px;"></i></a>
+                    <div class="subheadline">
+                        <span lang="th">บริการใหม่: Facebook Page Audit</span>
+                        <span lang="en">New Service: Facebook Page Audit</span>
+                    </div>
+                    <h1 lang="th">เตรียมเพจให้พร้อม<br>ก่อนเริ่มทำตลาดในลาว</h1>
+                    <h1 lang="en">Get Your Page Ready<br>Before Entering the Lao Market</h1>
+                    
+                    <p lang="th">เพื่อความมั่นใจในการขยายธุรกิจ การตรวจสอบความพร้อมของเพจ จะช่วยให้คุณวางแผนการตลาดได้อย่างแม่นยำ และใช้งบประมาณอย่างคุ้มค่าที่สุด</p>
+                    <p lang="en">Ensure your business expansion success. A page audit helps you plan your marketing precisely and spend your budget wisely.</p>
+
+                    <a href="#pricing" class="btn btn-gold">
+                        <span lang="th">ตรวจสอบรายละเอียดบริการ <i class="fas fa-arrow-down" style="margin-left: 10px;"></i></span>
+                        <span lang="en">Check Service Details <i class="fas fa-arrow-down" style="margin-left: 10px;"></i></span>
+                    </a>
                 </div>
                 <div class="hero-image">
                     <img src="images/pageaudit.jpg" alt="Page Audit Preparation">
@@ -237,26 +278,59 @@
     <section class="section-padding">
         <div class="container">
             <div class="text-center" style="max-width: 700px; margin: 0 auto 50px;">
-                <h2>บริการนี้ช่วยคุณได้อย่างไร?</h2>
-                <p>ผมวิเคราะห์โดยอิงจากประสบการณ์และการทำงานจริงในตลาดลาว เพื่อให้คุณได้รับคำแนะนำที่นำไปปรับใช้ได้จริง</p>
+                <h2 lang="th">บริการนี้ช่วยคุณได้อย่างไร?</h2>
+                <h2 lang="en">How Can This Service Help You?</h2>
+
+                <p lang="th">ผมวิเคราะห์โดยอิงจากประสบการณ์และการทำงานจริงในตลาดลาว เพื่อให้คุณได้รับคำแนะนำที่นำไปปรับใช้ได้จริง</p>
+                <p lang="en">I analyze based on real experience in the Lao market to provide actionable advice you can implement immediately.</p>
             </div>
 
             <div class="value-prop-grid">
                 <div class="value-card focus">
-                    <h3 style="color: var(--primary-blue);">ขอบเขตการให้บริการ</h3>
+                    <h3 style="color: var(--primary-blue);">
+                        <span lang="th">ขอบเขตการให้บริการ</span>
+                        <span lang="en">Service Scope</span>
+                    </h3>
                     <ul class="list-icon">
-                        <li><i class="fas fa-search"></i> เน้นการ <strong>"วิเคราะห์และให้คำแนะนำ"</strong> เพื่อการปรับปรุง</li>
-                        <li><i class="fas fa-file-alt"></i> เน้นเนื้อหาที่เข้าใจง่าย กระชับ และตรงประเด็น</li>
-                        <li><i class="fas fa-lightbulb"></i> เน้นการหาแนวทางแก้ไขปัญหาที่ต้นเหตุ</li>
+                        <li>
+                            <i class="fas fa-search"></i> 
+                            <span lang="th">เน้นการ <strong>"วิเคราะห์และให้คำแนะนำ"</strong> เพื่อการปรับปรุง</span>
+                            <span lang="en">Focus on <strong>"Analysis & Advice"</strong> for improvement.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-file-alt"></i> 
+                            <span lang="th">เน้นเนื้อหาที่เข้าใจง่าย กระชับ และตรงประเด็น</span>
+                            <span lang="en">Concise, easy-to-understand, and relevant content.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-lightbulb"></i> 
+                            <span lang="th">เน้นการหาแนวทางแก้ไขปัญหาที่ต้นเหตุ</span>
+                            <span lang="en">Focus on solving problems at the root cause.</span>
+                        </li>
                     </ul>
                 </div>
                 
                 <div class="value-card benefit">
-                    <h3 style="color: var(--success);">สิ่งที่คุณจะได้รับ</h3>
+                    <h3 style="color: var(--success);">
+                        <span lang="th">สิ่งที่คุณจะได้รับ</span>
+                        <span lang="en">What You Will Get</span>
+                    </h3>
                     <ul class="list-icon">
-                        <li><i class="fas fa-chart-line"></i> ทราบจุดแข็งและจุดที่ควรพัฒนาของเพจ</li>
-                        <li><i class="fas fa-user-friends"></i> มุมมองที่สะท้อนความเข้าใจลูกค้าชาวลาว</li>
-                        <li><i class="fas fa-shield-alt"></i> ช่วยลดความเสี่ยงในการลงทุนโฆษณาในช่วงเริ่มต้น</li>
+                        <li>
+                            <i class="fas fa-chart-line"></i> 
+                            <span lang="th">ทราบจุดแข็งและจุดที่ควรพัฒนาของเพจ</span>
+                            <span lang="en">Identify strengths and areas for improvement.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-user-friends"></i> 
+                            <span lang="th">มุมมองที่สะท้อนความเข้าใจลูกค้าชาวลาว</span>
+                            <span lang="en">Insights reflecting Lao customer perspectives.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-shield-alt"></i> 
+                            <span lang="th">ช่วยลดความเสี่ยงในการลงทุนโฆษณาในช่วงเริ่มต้น</span>
+                            <span lang="en">Minimize risks in initial ad investment.</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -266,40 +340,57 @@
     <section class="section-padding scope-section">
         <div class="container">
             <div class="text-center" style="margin-bottom: 50px;">
-                <h2>6 หัวข้อหลักในการตรวจสอบ</h2>
-                <p class="highlight-gold" style="font-weight: 500;">ครอบคลุมปัจจัยสำคัญที่มีผลต่อความสำเร็จ</p>
+                <h2 lang="th">6 หัวข้อหลักในการตรวจสอบ</h2>
+                <h2 lang="en">6 Key Audit Points</h2>
+                
+                <p class="highlight-gold" style="font-weight: 500;">
+                    <span lang="th">ครอบคลุมปัจจัยสำคัญที่มีผลต่อความสำเร็จ</span>
+                    <span lang="en">Covering crucial factors for success</span>
+                </p>
             </div>
 
             <div class="scope-grid">
                 <div class="scope-card">
                     <div class="scope-icon"><i class="fas fa-columns"></i></div>
-                    <h4>1. โครงสร้างพื้นฐานเพจ</h4>
-                    <p>ตรวจสอบข้อมูล Page Info, ปุ่ม CTA และช่องทางการติดต่อ ว่ามีความครบถ้วนและสะดวกต่อลูกค้าหรือไม่</p>
+                    <h4 lang="th">1. โครงสร้างพื้นฐานเพจ</h4>
+                    <h4 lang="en">1. Page Infrastructure</h4>
+                    <p lang="th">ตรวจสอบข้อมูล Page Info, ปุ่ม CTA และช่องทางการติดต่อ ว่ามีความครบถ้วนและสะดวกต่อลูกค้าหรือไม่</p>
+                    <p lang="en">Check Page Info, CTA buttons, and contact channels for completeness and ease of access.</p>
                 </div>
                 <div class="scope-card">
                     <div class="scope-icon"><i class="fas fa-star"></i></div>
-                    <h4>2. ความน่าเชื่อถือ (Credibility)</h4>
-                    <p>วิเคราะห์ภาพลักษณ์โดยรวม และองค์ประกอบที่ช่วยสร้างความมั่นใจให้กับลูกค้าใหม่</p>
+                    <h4 lang="th">2. ความน่าเชื่อถือ (Credibility)</h4>
+                    <h4 lang="en">2. Credibility</h4>
+                    <p lang="th">วิเคราะห์ภาพลักษณ์โดยรวม และองค์ประกอบที่ช่วยสร้างความมั่นใจให้กับลูกค้าใหม่</p>
+                    <p lang="en">Analyze overall image and elements that build trust for new customers.</p>
                 </div>
                 <div class="scope-card">
                     <div class="scope-icon"><i class="fas fa-language"></i></div>
-                    <h4>3. เนื้อหาและการสื่อสาร</h4>
-                    <p>ตรวจสอบการใช้ภาษา การนำเสนอสินค้า และโปรโมชั่น ว่ามีความเหมาะสมและเข้าใจง่ายหรือไม่</p>
+                    <h4 lang="th">3. เนื้อหาและการสื่อสาร</h4>
+                    <h4 lang="en">3. Content & Communication</h4>
+                    <p lang="th">ตรวจสอบการใช้ภาษา การนำเสนอสินค้า และโปรโมชั่น ว่ามีความเหมาะสมและเข้าใจง่ายหรือไม่</p>
+                    <p lang="en">Check language usage, product presentation, and promotions for local suitability and clarity.</p>
                 </div>
                 <div class="scope-card">
                     <div class="scope-icon"><i class="fas fa-comment-dots"></i></div>
-                    <h4>4. ประสบการณ์ใน Inbox</h4>
-                    <p>ให้คำแนะนำเกี่ยวกับแนวทางการตอบแชท เพื่อเพิ่มโอกาสในการปิดการขาย</p>
+                    <h4 lang="th">4. ประสบการณ์ใน Inbox</h4>
+                    <h4 lang="en">4. Inbox Experience</h4>
+                    <p lang="th">ให้คำแนะนำเกี่ยวกับแนวทางการตอบแชท เพื่อเพิ่มโอกาสในการปิดการขาย</p>
+                    <p lang="en">Provide advice on chat guidelines to increase sales closing opportunities.</p>
                 </div>
                 <div class="scope-card">
                     <div class="scope-icon"><i class="fas fa-ad"></i></div>
-                    <h4>5. ความพร้อมด้านโฆษณา</h4>
-                    <p>ประเมินความพร้อมของหน้าเพจก่อนเริ่มยิงโฆษณา เพื่อให้งบประมาณถูกใช้อย่างมีประสิทธิภาพ</p>
+                    <h4 lang="th">5. ความพร้อมด้านโฆษณา</h4>
+                    <h4 lang="en">5. Ads Readiness</h4>
+                    <p lang="th">ประเมินความพร้อมของหน้าเพจก่อนเริ่มยิงโฆษณา เพื่อให้งบประมาณถูกใช้อย่างมีประสิทธิภาพ</p>
+                    <p lang="en">Assess page readiness before running ads to ensure efficient budget spending.</p>
                 </div>
                 <div class="scope-card">
                     <div class="scope-icon"><i class="fas fa-box-open"></i></div>
-                    <h4>6. ความเหมาะสมกับตลาด</h4>
-                    <p>วิเคราะห์สินค้า ราคา และระบบการจัดการ ว่าสอดคล้องกับพฤติกรรมผู้บริโภคในลาวหรือไม่</p>
+                    <h4 lang="th">6. ความเหมาะสมกับตลาด</h4>
+                    <h4 lang="en">6. Market Fit</h4>
+                    <p lang="th">วิเคราะห์สินค้า ราคา และระบบการจัดการ ว่าสอดคล้องกับพฤติกรรมผู้บริโภคในลาวหรือไม่</p>
+                    <p lang="en">Analyze product, pricing, and management systems for alignment with Lao consumer behavior.</p>
                 </div>
             </div>
         </div>
@@ -312,33 +403,65 @@
                     <img src="https://placehold.co/500x700/d4a373/ffffff?text=Audit+Report" alt="Audit Report Deliverable">
                 </div>
                 <div class="pricing-content">
-                    <h2>แพ็กเกจบริการ</h2>
-                    <p>การลงทุนเพื่อความมั่นใจในระยะยาว และเตรียมความพร้อมก่อนการขยายตลาด</p>
+                    <h2 lang="th">แพ็กเกจบริการ</h2>
+                    <h2 lang="en">Service Package</h2>
                     
-                    <div class="price-tag">9,900 บาท <span>/ 1 เพจ</span></div>
+                    <p lang="th">การลงทุนเพื่อความมั่นใจในระยะยาว และเตรียมความพร้อมก่อนการขยายตลาด</p>
+                    <p lang="en">An investment for long-term confidence and preparation before market expansion.</p>
+                    
+                    <div class="price-tag">
+                        9,900 <span lang="th">บาท / 1 เพจ</span><span lang="en">THB / 1 Page</span>
+                    </div>
                     
                     <ul class="deliverable-list" style="margin: 30px 0;">
                         <li>
                             <i class="fas fa-file-alt"></i>
-                            <div><strong>รายงานสรุปผล (PDF)</strong><br>รวบรวมประเด็นสำคัญและข้อเสนอแนะเฉพาะแบรนด์ของคุณ</div>
+                            <div>
+                                <strong lang="th">รายงานสรุปผล (PDF)</strong>
+                                <strong lang="en">Summary Report (PDF)</strong>
+                                <br>
+                                <span lang="th">รวบรวมประเด็นสำคัญและข้อเสนอแนะเฉพาะแบรนด์ของคุณ</span>
+                                <span lang="en">Compiled key issues and brand-specific suggestions.</span>
+                            </div>
                         </li>
                         <li>
                             <i class="fas fa-compass"></i>
-                            <div><strong>บทสรุปและแนวทาง (Conclusion)</strong><br>วิเคราะห์ความเป็นไปได้ และลำดับความสำคัญของสิ่งที่ควรทำ</div>
+                            <div>
+                                <strong lang="th">บทสรุปและแนวทาง (Conclusion)</strong>
+                                <strong lang="en">Conclusion & Roadmap</strong>
+                                <br>
+                                <span lang="th">วิเคราะห์ความเป็นไปได้ และลำดับความสำคัญของสิ่งที่ควรทำ</span>
+                                <span lang="en">Feasibility analysis and priority of actions.</span>
+                            </div>
                         </li>
                         <li>
                             <i class="fas fa-phone-alt"></i>
-                            <div><strong>Session อธิบายผล 30 นาที</strong><br>พูดคุยสอบถามข้อสงสัยจากรายงาน เพื่อความเข้าใจที่ตรงกัน</div>
+                            <div>
+                                <strong lang="th">Session อธิบายผล 30 นาที</strong>
+                                <strong lang="en">30-Min Debrief Session</strong>
+                                <br>
+                                <span lang="th">พูดคุยสอบถามข้อสงสัยจากรายงาน เพื่อความเข้าใจที่ตรงกัน</span>
+                                <span lang="en">Discuss and clarify any questions from the report.</span>
+                            </div>
                         </li>
                     </ul>
 
                     <div class="pricing-note">
-                        <div><i class="fas fa-check-circle"></i> ราคาเดียว ไม่มีค่าใช้จ่ายแฝง</div>
-                        <div><i class="fas fa-check-circle"></i> ไม่มีการผูกมัดสัญญา</div>
+                        <div>
+                            <i class="fas fa-check-circle"></i> 
+                            <span lang="th">ราคาเดียว ไม่มีค่าใช้จ่ายแฝง</span>
+                            <span lang="en">One price, no hidden fees</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-check-circle"></i> 
+                            <span lang="th">ไม่มีการผูกมัดสัญญา</span>
+                            <span lang="en">No contract binding</span>
+                        </div>
                     </div>
 
                     <a href="https://your-google-form-link.com" target="_blank" class="btn btn-gold" style="width: 100%; margin-top: 30px; text-align: center;">
-                        สนใจจองคิว Audit <i class="fas fa-chevron-right"></i>
+                        <span lang="th">สนใจจองคิว Audit <i class="fas fa-chevron-right"></i></span>
+                        <span lang="en">Book Your Audit Now <i class="fas fa-chevron-right"></i></span>
                     </a>
                 </div>
             </div>
@@ -349,19 +472,51 @@
         <div class="container">
             <div class="target-grid">
                 <div class="target-col">
-                    <h3 style="color: var(--primary-blue);"><i class="fas fa-user-check" style="color: var(--success);"></i> เหมาะสำหรับ</h3>
+                    <h3 style="color: var(--primary-blue);">
+                        <i class="fas fa-user-check" style="color: var(--success);"></i> 
+                        <span lang="th">เหมาะสำหรับ</span>
+                        <span lang="en">Suitable For</span>
+                    </h3>
                     <ul class="list-icon">
-                        <li><i class="fas fa-check" style="color: var(--success);"></i> เจ้าของธุรกิจที่ต้องการข้อมูลประกอบการตัดสินใจ</li>
-                        <li><i class="fas fa-check" style="color: var(--success);"></i> ผู้ที่ต้องการทราบสาเหตุว่าทำไมการตลาดเดิมจึงยังไม่ได้ผลลัพธ์ตามเป้า</li>
-                        <li><i class="fas fa-check" style="color: var(--success);"></i> ผู้ที่ต้องการเตรียมความพร้อมอย่างเป็นระบบ</li>
+                        <li>
+                            <i class="fas fa-check" style="color: var(--success);"></i> 
+                            <span lang="th">เจ้าของธุรกิจที่ต้องการข้อมูลประกอบการตัดสินใจ</span>
+                            <span lang="en">Business owners needing data for decision making.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check" style="color: var(--success);"></i> 
+                            <span lang="th">ผู้ที่ต้องการทราบสาเหตุว่าทำไมการตลาดเดิมจึงยังไม่ได้ผลลัพธ์ตามเป้า</span>
+                            <span lang="en">Those needing to know why previous marketing failed to meet goals.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check" style="color: var(--success);"></i> 
+                            <span lang="th">ผู้ที่ต้องการเตรียมความพร้อมอย่างเป็นระบบ</span>
+                            <span lang="en">Those who want systematic preparation.</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="target-col">
-                    <h3 style="color: var(--primary-blue);"><i class="fas fa-info-circle" style="color: var(--soft-gray);"></i> หมายเหตุ</h3>
+                    <h3 style="color: var(--primary-blue);">
+                        <i class="fas fa-info-circle" style="color: var(--soft-gray);"></i> 
+                        <span lang="th">หมายเหตุ</span>
+                        <span lang="en">Note</span>
+                    </h3>
                     <ul class="list-icon">
-                        <li><i class="fas fa-minus" style="color: var(--soft-gray);"></i> บริการนี้เน้นการ "ตรวจและแนะนำ" ไม่รวมบริการรับยิงโฆษณา</li>
-                        <li><i class="fas fa-minus" style="color: var(--soft-gray);"></i> เหมาะสำหรับท่านที่เปิดรับคำแนะนำตรงไปตรงมาเพื่อการปรับปรุง</li>
-                        <li><i class="fas fa-minus" style="color: var(--soft-gray);"></i> ผลลัพธ์ขึ้นอยู่กับการนำข้อเสนอแนะไปปรับใช้จริง</li>
+                        <li>
+                            <i class="fas fa-minus" style="color: var(--soft-gray);"></i> 
+                            <span lang="th">บริการนี้เน้นการ "ตรวจและแนะนำ" ไม่รวมบริการรับยิงโฆษณา</span>
+                            <span lang="en">Focuses on "Audit & Advice", excluding ad running services.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-minus" style="color: var(--soft-gray);"></i> 
+                            <span lang="th">เหมาะสำหรับท่านที่เปิดรับคำแนะนำตรงไปตรงมาเพื่อการปรับปรุง</span>
+                            <span lang="en">Best for those open to straightforward advice for improvement.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-minus" style="color: var(--soft-gray);"></i> 
+                            <span lang="th">ผลลัพธ์ขึ้นอยู่กับการนำข้อเสนอแนะไปปรับใช้จริง</span>
+                            <span lang="en">Results depend on the actual implementation of advice.</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -370,22 +525,31 @@
 
     <section class="section-padding">
         <div class="container">
-            <h2 class="text-center">ขั้นตอนการใช้บริการ</h2>
+            <h2 class="text-center">
+                <span lang="th">ขั้นตอนการใช้บริการ</span>
+                <span lang="en">Service Process</span>
+            </h2>
             <div class="process-steps">
                 <div class="step-card">
                     <div class="step-num">1</div>
-                    <h4>กรอกข้อมูลเบื้องต้น</h4>
-                    <p>เพื่อให้ทางเราประเมินความต้องการและสินค้าของท่าน</p>
+                    <h4 lang="th">กรอกข้อมูลเบื้องต้น</h4>
+                    <h4 lang="en">Fill Initial Info</h4>
+                    <p lang="th">เพื่อให้ทางเราประเมินความต้องการและสินค้าของท่าน</p>
+                    <p lang="en">For us to assess your needs and products.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-num">2</div>
-                    <h4>ชำระค่าบริการ</h4>
-                    <p>ยืนยันการจองคิวงาน เพื่อเริ่มดำเนินการวิเคราะห์</p>
+                    <h4 lang="th">ชำระค่าบริการ</h4>
+                    <h4 lang="en">Payment</h4>
+                    <p lang="th">ยืนยันการจองคิวงาน เพื่อเริ่มดำเนินการวิเคราะห์</p>
+                    <p lang="en">Confirm booking to start the analysis.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-num">3</div>
-                    <h4>รับผลการวิเคราะห์</h4>
-                    <p>จัดส่งรายงานภายใน 3-5 วันทำการ และนัดหมายเพื่ออธิบายผล</p>
+                    <h4 lang="th">รับผลการวิเคราะห์</h4>
+                    <h4 lang="en">Receive Analysis</h4>
+                    <p lang="th">จัดส่งรายงานภายใน 3-5 วันทำการ และนัดหมายเพื่ออธิบายผล</p>
+                    <p lang="en">Report delivery within 3-5 business days and appointment for explanation.</p>
                 </div>
             </div>
         </div>
@@ -393,13 +557,20 @@
 
     <section class="final-cta">
         <div class="container">
-            <h2>เริ่มต้นอย่างมั่นใจในตลาดลาว</h2>
-            <p>ให้เราเป็นส่วนหนึ่งในการเตรียมความพร้อมเพื่อความสำเร็จของธุรกิจคุณ</p>
+            <h2 lang="th">เริ่มต้นอย่างมั่นใจในตลาดลาว</h2>
+            <h2 lang="en">Start Confidently in the Lao Market</h2>
+
+            <p lang="th">ให้เราเป็นส่วนหนึ่งในการเตรียมความพร้อมเพื่อความสำเร็จของธุรกิจคุณ</p>
+            <p lang="en">Let us be part of your preparation for business success.</p>
+
             <a href="https://your-google-form-link.com" target="_blank" class="btn btn-gold" style="font-size: 1.2rem; padding: 18px 50px;">
-                ลงทะเบียนเพื่อขอรับคำปรึกษา
+                <span lang="th">ลงทะเบียนเพื่อขอรับคำปรึกษา</span>
+                <span lang="en">Register for Consultation</span>
             </a>
+            
             <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">
-                โดย <strong>Thai Lao E-Biz Advisor</strong><br>เพื่อนคู่คิดธุรกิจไทย-ลาว ด้วยประสบการณ์กว่า 10 ปี
+                <span lang="th">โดย <strong>Thai Lao E-Biz Advisor</strong><br>เพื่อนคู่คิดธุรกิจไทย-ลาว ด้วยประสบการณ์กว่า 10 ปี</span>
+                <span lang="en">By <strong>Thai Lao E-Biz Advisor</strong><br>Your Thai-Lao Business Partner with 10+ Years Experience</span>
             </p>
         </div>
     </section>
@@ -410,6 +581,32 @@
             <p><a href="http://www.thailaobiz.com" style="color: #d4a373;">www.thailaobiz.com</a></p>
         </div>
     </footer>
+
+    <script>
+        const langToggle = document.getElementById('lang-toggle');
+        const body = document.body;
+
+        // Load saved language
+        const currentLang = localStorage.getItem('language');
+        if (currentLang === 'en') {
+            body.classList.add('lang-en');
+            langToggle.textContent = 'TH';
+        } else {
+            body.classList.remove('lang-en');
+            langToggle.textContent = 'EN';
+        }
+
+        langToggle.addEventListener('click', () => {
+            body.classList.toggle('lang-en');
+            if (body.classList.contains('lang-en')) {
+                localStorage.setItem('language', 'en');
+                langToggle.textContent = 'TH';
+            } else {
+                localStorage.setItem('language', 'th');
+                langToggle.textContent = 'EN';
+            }
+        });
+    </script>
 
 </body>
 </html>
