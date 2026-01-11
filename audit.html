@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>บริการตรวจเพจ (Facebook Page Audit) ก่อนบุกตลาดลาว | Thai Lao E-Biz Advisor</title>
-    <meta name="description" content="บริการตรวจเช็คความพร้อมของเพจ Facebook ก่อนยิงแอดไปตลาดลาว ตัดสินใจบนข้อมูลจริง ลดความเสี่ยง ประหยัดงบโฆษณา โดยผู้เชี่ยวชาญตลาดลาว 10 ปี">
+    <title>บริการตรวจความพร้อมเพจ (Page Audit) ก่อนทำตลาดลาว | Thai Lao E-Biz Advisor</title>
+    <meta name="description" content="บริการวิเคราะห์และให้คำแนะนำเพจ Facebook เพื่อเตรียมความพร้อมก่อนทำตลาดในลาว ช่วยลดความเสี่ยงและเพิ่มโอกาสความสำเร็จ โดย Thai Lao E-Biz Advisor">
+    <meta name="author" content="Thai Lao E-Biz Advisor">
 
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +19,8 @@
             --text-dark: #333333;      /* Main Text Color */
             --white: #ffffff;
             --success: #28a745;
-            --danger: #dc3545;
+            --danger: #dc3545; /* Used sparingly now */
+            --soft-gray: #6c757d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -59,7 +61,7 @@
         }
         .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 163, 115, 0.5); }
 
-        /* --- HEADER (Simplified for Landing Page) --- */
+        /* --- HEADER --- */
         header { background: var(--white); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 50px; }
@@ -79,18 +81,18 @@
             gap: 50px;
             align-items: center;
         }
-        .hero-text h1 { color: var(--white); font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
-        .hero-text .subheadline { font-size: 1.25rem; color: var(--secondary-gold); margin-bottom: 30px; font-weight: 500; }
+        .hero-text h1 { color: var(--white); font-size: 2.6rem; line-height: 1.3; margin-bottom: 20px; }
+        .hero-text .subheadline { font-size: 1.2rem; color: var(--secondary-gold); margin-bottom: 25px; font-weight: 500; letter-spacing: 1px; }
         .hero-text p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px; max-width: 500px; }
+        
         .hero-image img {
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            transform: perspective(1000px) rotateY(-10deg);
+            /* Removed rotation for a softer look */
             transition: transform 0.5s ease;
         }
-        .hero-image img:hover { transform: perspective(1000px) rotateY(0deg); }
 
-        /* --- VALUE PROPOSITION (What VS What Not) --- */
+        /* --- VALUE PROPOSITION --- */
         .value-prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
         .value-card {
             background: var(--white);
@@ -99,16 +101,17 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             position: relative;
         }
-        .value-card h3 { text-align: center; margin-bottom: 30px; font-size: 1.5rem; }
-        .value-card.is-not { border-top: 5px solid var(--danger); }
-        .value-card.is-it { border-top: 5px solid var(--success); }
+        .value-card h3 { text-align: center; margin-bottom: 30px; font-size: 1.4rem; }
+        /* Softer borders */
+        .value-card.focus { border-top: 4px solid var(--primary-blue); }
+        .value-card.benefit { border-top: 4px solid var(--success); }
         
-        .list-icon li { margin-bottom: 15px; display: flex; align-items: flex-start; font-size: 1.05rem; }
-        .list-icon i { margin-right: 15px; font-size: 1.3rem; margin-top: 3px; flex-shrink: 0; }
-        .is-not i { color: var(--danger); }
-        .is-it i { color: var(--success); }
+        .list-icon li { margin-bottom: 15px; display: flex; align-items: flex-start; font-size: 1.05rem; color: #555; }
+        .list-icon i { margin-right: 15px; font-size: 1.2rem; margin-top: 4px; flex-shrink: 0; }
+        .focus i { color: var(--primary-blue); }
+        .benefit i { color: var(--success); }
 
-        /* --- SCOPE OF AUDIT (6 Points Grid) --- */
+        /* --- SCOPE OF AUDIT --- */
         .scope-section { background: var(--white); }
         .scope-grid {
             display: grid;
@@ -126,18 +129,19 @@
         }
         .scope-card:hover { background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.08); transform: translateY(-5px); }
         .scope-icon {
-            width: 70px; height: 70px;
-            background: var(--primary-blue);
-            color: var(--secondary-gold);
+            width: 60px; height: 60px;
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--secondary-gold);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin: 0 auto 20px;
         }
-        .scope-card h4 { margin-bottom: 15px; font-size: 1.2rem; }
+        .scope-card h4 { margin-bottom: 15px; font-size: 1.15rem; }
         .scope-card p { font-size: 0.95rem; color: #666; }
 
-        /* --- DELIVERABLES & PRICING --- */
+        /* --- PRICING --- */
         .pricing-container {
             display: flex;
             gap: 50px;
@@ -151,53 +155,52 @@
         .pricing-image img { width: 100%; height: 100%; object-fit: cover; min-height: 500px; }
         .pricing-content { flex: 1; padding: 50px; }
         
-        .price-tag { font-size: 3.5rem; color: var(--primary-blue); font-weight: 800; line-height: 1; margin: 20px 0; }
-        .price-tag span { font-size: 1.2rem; color: #777; font-weight: normal; }
+        .price-tag { font-size: 3rem; color: var(--primary-blue); font-weight: 800; line-height: 1; margin: 20px 0; }
+        .price-tag span { font-size: 1rem; color: #777; font-weight: normal; }
         .deliverable-list li { margin-bottom: 20px; display: flex; align-items: center; }
-        .deliverable-list i { color: var(--secondary-gold); font-size: 1.5rem; margin-right: 15px; }
-        .deliverable-list strong { color: var(--primary-blue); }
+        .deliverable-list i { color: var(--secondary-gold); font-size: 1.3rem; margin-right: 15px; }
         
-        .no-hidden-fees { display: flex; gap: 20px; margin-top: 30px; color: #777; font-size: 0.9rem; }
-        .no-hidden-fees div { display: flex; align-items: center; }
-        .no-hidden-fees i { color: var(--success); margin-right: 8px; }
+        .pricing-note { display: flex; gap: 20px; margin-top: 30px; color: #777; font-size: 0.9rem; }
+        .pricing-note div { display: flex; align-items: center; }
+        .pricing-note i { color: var(--success); margin-right: 8px; }
 
         /* --- TARGET AUDIENCE --- */
         .target-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .target-col h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; }
+        .target-col h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; font-size: 1.3rem; }
 
-        /* --- PROCESS STEPS --- */
+        /* --- PROCESS --- */
         .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
         .step-card { text-align: center; position: relative; }
         .step-num {
-            width: 50px; height: 50px; background: var(--secondary-gold); color: var(--white);
-            font-size: 1.5rem; font-weight: bold; border-radius: 50%;
+            width: 45px; height: 45px; background: var(--secondary-gold); color: var(--white);
+            font-size: 1.2rem; font-weight: bold; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 20px; z-index: 2; position: relative;
         }
-        /* Connecting lines for desktop */
         .step-card:not(:last-child)::after {
-            content: ''; position: absolute; top: 25px; right: -50%; width: 100%; height: 2px;
-            background: #ddd; z-index: 1;
+            content: ''; position: absolute; top: 22px; right: -50%; width: 100%; height: 2px;
+            background: #eee; z-index: 1;
         }
         .step-card h4 { margin-bottom: 10px; }
 
         /* --- FINAL CTA --- */
         .final-cta { background: var(--primary-blue); color: var(--white); text-align: center; padding: 80px 0; }
-        .final-cta h2 { color: var(--white); font-size: 2.5rem; margin-bottom: 20px; }
-        .final-cta p { color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 40px; }
+        .final-cta h2 { color: var(--white); font-size: 2.2rem; margin-bottom: 20px; }
+        .final-cta p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px; }
 
         /* --- FOOTER --- */
         footer { background: #0a1f3d; color: rgba(255,255,255,0.6); text-align: center; padding: 30px 0; font-size: 0.9rem; }
+        footer a { color: var(--secondary-gold); text-decoration: none; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
             .hero-grid, .value-prop-grid, .pricing-container, .target-grid { grid-template-columns: 1fr; gap: 30px; }
-            .hero-image, .pricing-image { order: -1; /* เอาภาพขึ้นก่อนบนมือถือ */ text-align: center; }
-            .hero-image img { transform: none; max-height: 350px; }
-            .pricing-image img { min-height: auto; max-height: 300px; border-radius: 20px 20px 0 0;}
+            .hero-image, .pricing-image { order: -1; text-align: center; }
+            .hero-image img { max-height: 300px; }
+            .pricing-image img { min-height: auto; max-height: 250px; border-radius: 20px 20px 0 0;}
             .scope-grid, .process-steps { grid-template-columns: 1fr; }
             .step-card:not(:last-child)::after { display: none; }
-            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text h1 { font-size: 2rem; }
             .pricing-content { padding: 30px; }
         }
     </style>
@@ -219,13 +222,13 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <div class="subheadline">บริการใหม่! Facebook Page Audit</div>
-                    <h1>ตรวจเพจให้ชัวร์<br>ก่อนเสียเงินยิงแอดตลาดลาว</h1>
-                    <p>ถ้าคุณกำลังคิดจะบุกตลาดลาว แต่ไม่แน่ใจว่าเพจพร้อมขายจริงหรือยัง? Audit นี้จะช่วยให้คุณตัดสินใจบน "ข้อมูลจริง" ไม่ใช่ความรู้สึก</p>
-                    <a href="#pricing" class="btn btn-gold">ดูราคาและสิ่งที่ได้รับ <i class="fas fa-arrow-down" style="margin-left: 10px;"></i></a>
+                    <div class="subheadline">บริการใหม่: Facebook Page Audit</div>
+                    <h1>เตรียมเพจให้พร้อม<br>ก่อนเริ่มทำตลาดในลาว</h1>
+                    <p>เพื่อความมั่นใจในการขยายธุรกิจ การตรวจสอบความพร้อมของเพจ จะช่วยให้คุณวางแผนการตลาดได้อย่างแม่นยำ และใช้งบประมาณอย่างคุ้มค่าที่สุด</p>
+                    <a href="#pricing" class="btn btn-gold">ตรวจสอบรายละเอียดบริการ <i class="fas fa-arrow-down" style="margin-left: 10px;"></i></a>
                 </div>
                 <div class="hero-image">
-                    <img src="https://placehold.co/600x400/0f2c59/ffffff?text=Page+Audit+Illustration" alt="Facebook Page Audit Analysis">
+                    <img src="https://placehold.co/600x400/0f2c59/ffffff?text=Page+Readiness+Check" alt="Page Audit Preparation">
                 </div>
             </div>
         </div>
@@ -234,33 +237,27 @@
     <section class="section-padding">
         <div class="container">
             <div class="text-center" style="max-width: 700px; margin: 0 auto 50px;">
-                <h2>Audit นี้ช่วยคุณเรื่องอะไร?</h2>
-                <p>ผมใช้ประสบการณ์จริงกว่า 10 ปีในตลาดลาว มาเป็นเกณฑ์ในการตรวจ เพื่อให้คุณเห็นภาพชัดที่สุด</p>
+                <h2>บริการนี้ช่วยคุณได้อย่างไร?</h2>
+                <p>ผมวิเคราะห์โดยอิงจากประสบการณ์และการทำงานจริงในตลาดลาว เพื่อให้คุณได้รับคำแนะนำที่นำไปปรับใช้ได้จริง</p>
             </div>
 
             <div class="value-prop-grid">
-                <div class="value-card is-not">
-                    <h3 style="color: var(--danger);">Audit นี้ “ไม่ใช่” อะไร</h3>
+                <div class="value-card focus">
+                    <h3 style="color: var(--primary-blue);">ขอบเขตการให้บริการ</h3>
                     <ul class="list-icon">
-                        <li><i class="fas fa-times-circle"></i> ไม่ใช่การรับจ้างยิงโฆษณา</li>
-                        <li><i class="fas fa-times-circle"></i> ไม่ใช่การเข้าไปแก้ไขเพจให้ทันที</li>
-                        <li><i class="fas fa-times-circle"></i> ไม่ใช่รายงานหรูๆ แบบ Corporate ที่ใช้งานจริงไม่ได้</li>
+                        <li><i class="fas fa-search"></i> เน้นการ <strong>"วิเคราะห์และให้คำแนะนำ"</strong> เพื่อการปรับปรุง</li>
+                        <li><i class="fas fa-file-alt"></i> เน้นเนื้อหาที่เข้าใจง่าย กระชับ และตรงประเด็น</li>
+                        <li><i class="fas fa-lightbulb"></i> เน้นการหาแนวทางแก้ไขปัญหาที่ต้นเหตุ</li>
                     </ul>
-                    <div style="text-align: center; margin-top: 30px; opacity: 0.3;">
-                        <i class="fas fa-ban fa-5x" style="color: var(--danger);"></i>
-                    </div>
                 </div>
                 
-                <div class="value-card is-it">
-                    <h3 style="color: var(--success);">แต่มันคือ...</h3>
+                <div class="value-card benefit">
+                    <h3 style="color: var(--success);">สิ่งที่คุณจะได้รับ</h3>
                     <ul class="list-icon">
-                        <li><i class="fas fa-check-circle"></i> การบอกตรงๆ ว่า <strong>"ควรไปต่อ"</strong> หรือ <strong>"ควรหยุดก่อน"</strong></li>
-                        <li><i class="fas fa-check-circle"></i> มุมมองจากคนนอก (Third Eye) ที่เข้าใจพฤติกรรมคนลาวจริง</li>
-                        <li><i class="fas fa-check-circle"></i> การลดความเสี่ยงจากการเสียเงินค่าโฆษณาโดยไม่จำเป็น</li>
+                        <li><i class="fas fa-chart-line"></i> ทราบจุดแข็งและจุดที่ควรพัฒนาของเพจ</li>
+                        <li><i class="fas fa-user-friends"></i> มุมมองที่สะท้อนความเข้าใจลูกค้าชาวลาว</li>
+                        <li><i class="fas fa-shield-alt"></i> ช่วยลดความเสี่ยงในการลงทุนโฆษณาในช่วงเริ่มต้น</li>
                     </ul>
-                    <div style="text-align: center; margin-top: 30px; opacity: 0.8;">
-                        <i class="fas fa-clipboard-check fa-5x" style="color: var(--success);"></i>
-                    </div>
                 </div>
             </div>
         </div>
@@ -269,40 +266,40 @@
     <section class="section-padding scope-section">
         <div class="container">
             <div class="text-center" style="margin-bottom: 50px;">
-                <h2>สิ่งที่ตรวจใน Facebook Page Audit</h2>
-                <p class="highlight-gold" style="font-weight: 500;">ครอบคลุม 6 จุดสำคัญ ที่ชี้วัดความสำเร็จในตลาดลาว</p>
+                <h2>6 หัวข้อหลักในการตรวจสอบ</h2>
+                <p class="highlight-gold" style="font-weight: 500;">ครอบคลุมปัจจัยสำคัญที่มีผลต่อความสำเร็จ</p>
             </div>
 
             <div class="scope-grid">
                 <div class="scope-card">
-                    <div class="scope-icon"><i class="fas fa-sitemap"></i></div>
-                    <h4>1. โครงสร้างเพจ (Foundation)</h4>
-                    <p>ตรวจสอบ Page Name, About, ปุ่ม CTA และความชัดเจนของช่องทางการติดต่อ ว่าลูกค้าหาง่ายหรือไม่</p>
+                    <div class="scope-icon"><i class="fas fa-columns"></i></div>
+                    <h4>1. โครงสร้างพื้นฐานเพจ</h4>
+                    <p>ตรวจสอบข้อมูล Page Info, ปุ่ม CTA และช่องทางการติดต่อ ว่ามีความครบถ้วนและสะดวกต่อลูกค้าหรือไม่</p>
                 </div>
                 <div class="scope-card">
-                    <div class="scope-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="scope-icon"><i class="fas fa-star"></i></div>
                     <h4>2. ความน่าเชื่อถือ (Credibility)</h4>
-                    <p>วิเคราะห์ภาพลักษณ์เพจ, รีวิว, และคอมเมนต์ต่างๆ ที่เป็นสัญญาณความน่าไว้ใจสำหรับคนลาว</p>
+                    <p>วิเคราะห์ภาพลักษณ์โดยรวม และองค์ประกอบที่ช่วยสร้างความมั่นใจให้กับลูกค้าใหม่</p>
                 </div>
                 <div class="scope-card">
-                    <div class="scope-icon"><i class="fas fa-pen-nib"></i></div>
-                    <h4>3. Content & Communication</h4>
-                    <p>การใช้ภาษา (ไทย/ลาว) การอธิบายราคาและโปรโมชั่น ว่าเข้าใจง่ายและโดนใจคนท้องถิ่นไหม</p>
+                    <div class="scope-icon"><i class="fas fa-language"></i></div>
+                    <h4>3. เนื้อหาและการสื่อสาร</h4>
+                    <p>ตรวจสอบการใช้ภาษา การนำเสนอสินค้า และโปรโมชั่น ว่ามีความเหมาะสมและเข้าใจง่ายหรือไม่</p>
                 </div>
                 <div class="scope-card">
-                    <div class="scope-icon"><i class="fas fa-comments-dollar"></i></div>
-                    <h4>4. Inbox Experience</h4>
-                    <p>ทดสอบวิธีการตอบแชท หา Pain Point ที่ทำให้ลูกค้าทักแล้วหาย ไม่ยอมปิดการขาย</p>
+                    <div class="scope-icon"><i class="fas fa-comment-dots"></i></div>
+                    <h4>4. ประสบการณ์ใน Inbox</h4>
+                    <p>ให้คำแนะนำเกี่ยวกับแนวทางการตอบแชท เพื่อเพิ่มโอกาสในการปิดการขาย</p>
                 </div>
                 <div class="scope-card">
-                    <div class="scope-icon"><i class="fas fa-bullhorn"></i></div>
-                    <h4>5. Ads Readiness</h4>
-                    <p>ประเมินว่าเพจพร้อมยิงแอดหรือยัง มีจุดไหนที่ถ้ายิงตอนนี้เท่ากับเอาเงินไปละลายแม่น้ำ</p>
+                    <div class="scope-icon"><i class="fas fa-ad"></i></div>
+                    <h4>5. ความพร้อมด้านโฆษณา</h4>
+                    <p>ประเมินความพร้อมของหน้าเพจก่อนเริ่มยิงโฆษณา เพื่อให้งบประมาณถูกใช้อย่างมีประสิทธิภาพ</p>
                 </div>
                 <div class="scope-card">
-                    <div class="scope-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                    <h4>6. Lao Market Fit</h4>
-                    <p>วิเคราะห์ตัวสินค้า ราคา วิธีการชำระเงิน และการจัดส่ง ว่าเหมาะสมกับบริบทตลาดลาวหรือไม่</p>
+                    <div class="scope-icon"><i class="fas fa-box-open"></i></div>
+                    <h4>6. ความเหมาะสมกับตลาด</h4>
+                    <p>วิเคราะห์สินค้า ราคา และระบบการจัดการ ว่าสอดคล้องกับพฤติกรรมผู้บริโภคในลาวหรือไม่</p>
                 </div>
             </div>
         </div>
@@ -312,36 +309,36 @@
         <div class="container">
             <div class="pricing-container">
                 <div class="pricing-image">
-                    <img src="https://placehold.co/500x700/d4a373/ffffff?text=Premium+Report+Delivered" alt="Audit Report Deliverable">
+                    <img src="https://placehold.co/500x700/d4a373/ffffff?text=Audit+Report" alt="Audit Report Deliverable">
                 </div>
                 <div class="pricing-content">
-                    <h2>สิ่งที่คุณจะได้รับ & ราคา</h2>
-                    <p>การลงทุนที่คุ้มค่า ดีกว่าเสียค่ายิงแอดทิ้งเดือนละหลายหมื่น</p>
+                    <h2>แพ็กเกจบริการ</h2>
+                    <p>การลงทุนเพื่อความมั่นใจในระยะยาว และเตรียมความพร้อมก่อนการขยายตลาด</p>
                     
                     <div class="price-tag">9,900 บาท <span>/ 1 เพจ</span></div>
                     
                     <ul class="deliverable-list" style="margin: 30px 0;">
                         <li>
-                            <i class="fas fa-file-pdf"></i>
-                            <div><strong>รายงาน Audit เฉพาะแบรนด์คุณ (PDF)</strong><br>สรุปปัญหาหลัก (Key Issues) และคำแนะนำที่ทำได้จริง</div>
+                            <i class="fas fa-file-alt"></i>
+                            <div><strong>รายงานสรุปผล (PDF)</strong><br>รวบรวมประเด็นสำคัญและข้อเสนอแนะเฉพาะแบรนด์ของคุณ</div>
                         </li>
                         <li>
-                            <i class="fas fa-flag-checkered"></i>
-                            <div><strong>Strategic Conclusion</strong><br>ฟันธงชัดเจนว่า: ควรเริ่ม / ควรปรับ / หรือควรรอก่อน</div>
+                            <i class="fas fa-compass"></i>
+                            <div><strong>บทสรุปและแนวทาง (Conclusion)</strong><br>วิเคราะห์ความเป็นไปได้ และลำดับความสำคัญของสิ่งที่ควรทำ</div>
                         </li>
                         <li>
-                            <i class="fas fa-phone-volume"></i>
-                            <div><strong>Call อธิบายผล 30 นาที</strong><br>อธิบายขยายความจากรายงาน (ไม่มีการขายของแฝง)</div>
+                            <i class="fas fa-phone-alt"></i>
+                            <div><strong>Session อธิบายผล 30 นาที</strong><br>พูดคุยสอบถามข้อสงสัยจากรายงาน เพื่อความเข้าใจที่ตรงกัน</div>
                         </li>
                     </ul>
 
-                    <div class="no-hidden-fees">
-                        <div><i class="fas fa-check"></i> ไม่มีค่าใช้จ่ายแฝง</div>
-                        <div><i class="fas fa-check"></i> ไม่ผูกมัดสัญญา</div>
+                    <div class="pricing-note">
+                        <div><i class="fas fa-check-circle"></i> ราคาเดียว ไม่มีค่าใช้จ่ายแฝง</div>
+                        <div><i class="fas fa-check-circle"></i> ไม่มีการผูกมัดสัญญา</div>
                     </div>
 
-                    <a href="LINK_TO_YOUR_GOOGLE_FORM_OR_LINE" target="_blank" class="btn btn-gold" style="width: 100%; margin-top: 30px; text-align: center;">
-                        จองคิว Audit ตอนนี้ <i class="fas fa-chevron-right"></i>
+                    <a href="https://your-google-form-link.com" target="_blank" class="btn btn-gold" style="width: 100%; margin-top: 30px; text-align: center;">
+                        สนใจจองคิว Audit <i class="fas fa-chevron-right"></i>
                     </a>
                 </div>
             </div>
@@ -352,19 +349,19 @@
         <div class="container">
             <div class="target-grid">
                 <div class="target-col">
-                    <h3 style="color: var(--success);"><i class="fas fa-user-check"></i> บริการนี้เหมาะกับใคร</h3>
-                    <ul class="list-icon is-it">
-                        <li><i class="fas fa-check"></i> เจ้าของแบรนด์ที่กำลังจะเข้าตลาดลาว และต้องการความมั่นใจ</li>
-                        <li><i class="fas fa-check"></i> คนที่เคยลองยิงแอดแล้ว "ไม่เวิร์ก" อยากรู้สาเหตุที่แท้จริง</li>
-                        <li><i class="fas fa-check"></i> คนที่อยากได้ความชัดเจนบนข้อมูล ก่อนลงทุนก้อนใหญ่</li>
+                    <h3 style="color: var(--primary-blue);"><i class="fas fa-user-check" style="color: var(--success);"></i> เหมาะสำหรับ</h3>
+                    <ul class="list-icon">
+                        <li><i class="fas fa-check" style="color: var(--success);"></i> เจ้าของธุรกิจที่ต้องการข้อมูลประกอบการตัดสินใจ</li>
+                        <li><i class="fas fa-check" style="color: var(--success);"></i> ผู้ที่ต้องการทราบสาเหตุว่าทำไมการตลาดเดิมจึงยังไม่ได้ผลลัพธ์ตามเป้า</li>
+                        <li><i class="fas fa-check" style="color: var(--success);"></i> ผู้ที่ต้องการเตรียมความพร้อมอย่างเป็นระบบ</li>
                     </ul>
                 </div>
                 <div class="target-col">
-                    <h3 style="color: var(--danger);"><i class="fas fa-user-times"></i> บริการนี้ไม่เหมาะกับใคร</h3>
-                    <ul class="list-icon is-not">
-                        <li><i class="fas fa-times"></i> คนที่อยากได้คำปลอบใจว่า "เพจดีแล้ว" (ผมพูดตรง)</li>
-                        <li><i class="fas fa-times"></i> คนที่อยากให้บอกว่าพร้อม ทั้งที่ยังไม่พร้อม</li>
-                        <li><i class="fas fa-times"></i> คนที่มองหาเอเจนซี่ยิงแอด (บริการนี้เน้นตรวจสุขภาพเพจ)</li>
+                    <h3 style="color: var(--primary-blue);"><i class="fas fa-info-circle" style="color: var(--soft-gray);"></i> หมายเหตุ</h3>
+                    <ul class="list-icon">
+                        <li><i class="fas fa-minus" style="color: var(--soft-gray);"></i> บริการนี้เน้นการ "ตรวจและแนะนำ" ไม่รวมบริการรับยิงโฆษณา</li>
+                        <li><i class="fas fa-minus" style="color: var(--soft-gray);"></i> เหมาะสำหรับท่านที่เปิดรับคำแนะนำตรงไปตรงมาเพื่อการปรับปรุง</li>
+                        <li><i class="fas fa-minus" style="color: var(--soft-gray);"></i> ผลลัพธ์ขึ้นอยู่กับการนำข้อเสนอแนะไปปรับใช้จริง</li>
                     </ul>
                 </div>
             </div>
@@ -373,22 +370,22 @@
 
     <section class="section-padding">
         <div class="container">
-            <h2 class="text-center">ขั้นตอนการทำงานง่ายๆ</h2>
+            <h2 class="text-center">ขั้นตอนการใช้บริการ</h2>
             <div class="process-steps">
                 <div class="step-card">
                     <div class="step-num">1</div>
-                    <h4>กรอกแบบฟอร์ม</h4>
-                    <p>เพื่อให้ผมคัดกรองเบื้องต้นว่าธุรกิจของคุณเหมาะกับบริการนี้หรือไม่</p>
+                    <h4>กรอกข้อมูลเบื้องต้น</h4>
+                    <p>เพื่อให้ทางเราประเมินความต้องการและสินค้าของท่าน</p>
                 </div>
                 <div class="step-card">
                     <div class="step-num">2</div>
                     <h4>ชำระค่าบริการ</h4>
-                    <p>ยืนยันการจองคิวงาน (9,900 บาท) เพื่อเริ่มดำเนินการ</p>
+                    <p>ยืนยันการจองคิวงาน เพื่อเริ่มดำเนินการวิเคราะห์</p>
                 </div>
                 <div class="step-card">
                     <div class="step-num">3</div>
-                    <h4>รับรายงาน + Call</h4>
-                    <p>รอรับผลการวิเคราะห์ภายใน 3-5 วันทำการ และนัดเวลาคุยผล</p>
+                    <h4>รับผลการวิเคราะห์</h4>
+                    <p>จัดส่งรายงานภายใน 3-5 วันทำการ และนัดหมายเพื่ออธิบายผล</p>
                 </div>
             </div>
         </div>
@@ -396,13 +393,13 @@
 
     <section class="final-cta">
         <div class="container">
-            <h2>ถ้าคุณอยากรู้ว่าเพจของคุณ<br>พร้อมขายในตลาดลาวจริงไหม?</h2>
-            <p>ให้ Audit นี้ช่วยคุณตัดสินใจ ก่อนเสียเงินหลักแสนกับโฆษณาที่ไม่ตรงกลุ่ม</p>
-            <a href="LINK_TO_YOUR_GOOGLE_FORM_OR_LINE" target="_blank" class="btn btn-gold" style="font-size: 1.3rem; padding: 20px 50px;">
-                กรอกแบบฟอร์มเพื่อขอ Audit
+            <h2>เริ่มต้นอย่างมั่นใจในตลาดลาว</h2>
+            <p>ให้เราเป็นส่วนหนึ่งในการเตรียมความพร้อมเพื่อความสำเร็จของธุรกิจคุณ</p>
+            <a href="https://your-google-form-link.com" target="_blank" class="btn btn-gold" style="font-size: 1.2rem; padding: 18px 50px;">
+                ลงทะเบียนเพื่อขอรับคำปรึกษา
             </a>
             <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">
-                บริการนี้ดำเนินการโดย Lao E-Biz Advisor<br>ที่ปรึกษาตลาดไทย–ลาว จากประสบการณ์จริงกว่า 10 ปี
+                โดย <strong>Thai Lao E-Biz Advisor</strong><br>เพื่อนคู่คิดธุรกิจไทย-ลาว ด้วยประสบการณ์กว่า 10 ปี
             </p>
         </div>
     </section>
@@ -410,6 +407,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Thai Lao E-Biz Advisor. All Rights Reserved.</p>
+            <p><a href="http://www.thailaobiz.com" style="color: #d4a373;">www.thailaobiz.com</a></p>
         </div>
     </footer>
 
